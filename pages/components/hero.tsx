@@ -33,6 +33,7 @@ const hero = () => {
                 // Absolute URL
                 src={Regalia}
                 alt='User profile picture'
+                width={1500}
             />
     </>
   )
