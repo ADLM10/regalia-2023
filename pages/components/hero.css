@@ -1,0 +1,65 @@
+#circle {
+    float: left;
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    shape-outside: circle();
+    clip-path: circle();
+    background: rgb(0, 0, 0);
+}
+
+.hero-text{
+    font-size: 15rem;
+    line-height: 15rem;
+
+}
+
+.primary-button {
+  display: flex;
+  background-color: black;
+  color: white;
+  width: 33%;
+  font-size: 5rem;
+  padding: 2rem;
+}
+
+.hero-section
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+svg {
+    fill: rgb(0, 0, 0);
+    height: auto;
+    max-width: 66vmin;
+    transform-origin: center;
+    width: 100%;
+  }
+  
+text {
+    fill: white;
+    font-size: 4rem;
+    font-weight: 400;
+    font-variant-ligatures: none;
+    letter-spacing: 1px;
+    animation: rotate 25s linear infinite;
+    transform-origin: 250px 250px;
+  }
+
+  
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .textcircle {
+    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+    transform-origin: 250px 250px;
+  }
+  
+  svg:hover .textcircle {
+    transform: scale(1.2) rotate(90deg);
+  }
