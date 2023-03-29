@@ -1,4 +1,6 @@
 import React from 'react'
+import Image from 'next/image'
+import Regalia from '../../public/images/regalia.jpg'
 const hero = () => {
   return (
     <>
@@ -13,19 +15,25 @@ const hero = () => {
                         
           </defs>
           <g className="textcircle">
-            <text textLength="1000">
+            <text textLength="900">
               <textPath 
               xlinkHref="#textcircle" 
               aria-label="regalia-tagline" 
-              textLength="1000">
-              rythm.rhmye.rapport.
+              textLength="900">
+              rythm. rhmye. rapport.
               </textPath>
             </text>
           </g>
         </svg>
     </div>
     </div>
-    <div className='primary-button'>Register Now</div>
+    <button className='primary-button'>Register Now</button>
+    <Image
+    className='image'
+                // Absolute URL
+                src={Regalia}
+                alt='User profile picture'
+            />
     </>
   )
 }

@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;800&display=swap');
 #circle {
     float: left;
-    width: 300px;
-    height: 300px;
-    margin: 20px;
+    width: 500px;
+    height: 500px;
+    margin: 10px;
     shape-outside: circle();
     clip-path: circle();
     background: rgb(0, 0, 0);
@@ -11,16 +12,36 @@
 .hero-text{
     font-size: 15rem;
     line-height: 15rem;
+    font-weight: 900;
 
 }
+.image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+}
 .primary-button {
   display: flex;
+  font-family: 'Unbounded', cursive;
+  font-weight: 800;
+  justify-content: center;
+  text-align: center;
   background-color: black;
   color: white;
-  width: 33%;
-  font-size: 5rem;
-  padding: 2rem;
+  font-size: 4rem;
+  padding: 3rem;
+  cursor: pointer;
+  border-radius: 200px;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  -ms-border-radius: 200px;
+  -o-border-radius: 200px;
+}
+
+.primary-button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 .hero-section
@@ -33,7 +54,7 @@
 svg {
     fill: rgb(0, 0, 0);
     height: auto;
-    max-width: 66vmin;
+    max-width: 80vmin;
     transform-origin: center;
     width: 100%;
   }
