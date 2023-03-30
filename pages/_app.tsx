@@ -2,7 +2,7 @@ import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
 import { AppProps } from "next/app";
 import { useState } from "react";
-import './components/hero.css';
+import './components/styles.css';
 import localFont from '@next/font/local';
 import Hero from "../pages/components/hero"
 
