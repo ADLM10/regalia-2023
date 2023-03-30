@@ -11,8 +11,7 @@ const hero = () => {
       className='hero-text' 
       style={{
         backgroundImage:`url(/images/regalia.jpg)`, 
-        backgroundSize:'cover',
-        backgroundClip:'text'}}>
+        backgroundSize:'cover'}}>
           regalia<br/>2023
       </div>
       <div id="circle">
@@ -37,20 +36,20 @@ const hero = () => {
       </div>
     </div>
     <button className='primary-button'>Register Now</button>
-    <Image
-        className='image'
-        // Absolute URL
-        src={BandBash}
-        alt='User profile picture'
-        width={1500}
-    />
     <div className='content'>
-      <p className='content-box'>
+      <p className='content-box1'>
       <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 20 20"><path fill="white" d="m7 6l1-2H6C3.79 4 2 6.79 2 9v7h7V9H5c0-3 2-3 2-3zm7 3c0-3 2-3 2-3l1-2h-2c-2.21 0-4 2.79-4 5v7h7V9z"/></svg>
       Regalia 2023 is the annual cultural fest of RCCIIT, which is a highly
 anticipated event among the college students and faculties. The fest is
 scheduled to be held in the month of April.</p>
-      <p className='content-box'>
+    {/* <Image
+        className='image'
+        // Absolute URL
+        src={BandBash}
+        alt='User profile picture'
+        width={1200}
+    /> */}
+      <p className='content-box2'>
       The theme of Regalia 2023 is Rhyme . Rhythm . Reverb and the fest
 promises to be an exciting and colorful extravaganza of music, dance,
 drama, fashion show and more . There will be a wide range of events
