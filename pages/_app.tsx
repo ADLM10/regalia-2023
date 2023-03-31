@@ -2,9 +2,9 @@ import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
 import { AppProps } from "next/app";
 import { useState } from "react";
-import './components/styles.css';
+import './../styles/styles.css';
 import localFont from '@next/font/local';
-import Hero from "../pages/components/hero"
+import Hero from "./../components/hero"
 
 const myFont = localFont({ src: '../public/fonts/Gismo-Trial-Round.woff2' })
 export default function App({
