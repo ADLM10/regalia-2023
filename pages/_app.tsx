@@ -8,7 +8,7 @@ import Hero from "./../components/hero"
 import "../styles/globals.css"
 import Script from 'next/script'
 
-const myFont = localFont({ src: '../public/fonts/Gismo-Trial-Round.woff2' })
+const myFont = localFont({ src: "../public/fonts/Gismo-Trial-Round.woff2" });
 export default function App({
   Component,
   pageProps,
