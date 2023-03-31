@@ -1,5 +1,6 @@
 import Head from "next/head";
-
+import localFont from '@next/font/local';
+import Hero from "./../components/hero"
 import data from "../public/data.json";
 
 // export async function getServerSideProps() {
@@ -20,7 +21,9 @@ export default function Home(): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main></main>
+      <main>
+      <Hero/>
+      </main>
     </>
   );
 }

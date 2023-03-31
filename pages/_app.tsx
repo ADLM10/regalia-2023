@@ -25,7 +25,6 @@ export default function App({
       <div className={myFont.className}>
       <Script src="../path/to/flowbite/dist/flowbite.min.js"/>
       <Component {...pageProps} />
-      <Hero/>
       </div>
     </SessionContextProvider>
   );
