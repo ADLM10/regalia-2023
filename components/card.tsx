@@ -1,18 +1,53 @@
 import Image from 'next/image'
 import BandBash from './../public/images/regalia-bandbash.jpg'
-const card = () => {
+const card = (
+    {
+        heading,
+        description,
+        imageSrc,
+        button,
+        transform='1',
+        lineHeight='',
+        className = '',
+        backgroundColor = '',
+        color = 'white',
+        style = {},
+        fontSizeClassName = 'text-3xl',
+        fontWeight = '600',
+        shadow = false,
+        borderRadius = '55px',
+    }: {
+        // gradientStyle?: React.CSSProperties ;
+        heading?:string|JSX.Element;
+        lineHeight?:string;
+        price?: string | JSX.Element;
+        button?: string | JSX.Element;
+        imageSrc?: string;
+        assetimage?:string;
+        description?:string | JSX.Element;
+        text?: string | JSX.Element;
+        className?: string;
+        disabled?: boolean;
+        backgroundColor?: string;
+        color?: string;
+        style?: React.CSSProperties;
+        fontSizeClassName?: string;
+        fontWeight?: string;
+        shadow?: boolean;
+        borderRadius?: string;
+        transform?: string;
+    }
+) => {
   return (
     <div>
     <div className="card">
-      <Image width={1000} height={1000} src={BandBash} alt='' />
+      <Image src={BandBash} alt='' />
       <div>
-        <h2>Invest in Valbs sparkling new construction</h2>
-        <h3>Type: Residential rental</h3>
+        <h2>{heading}</h2>
         <p>
-          Soon you can invest in Sid Harmas new attractive property, set in
-          the heart of Athens.
+            {description}
         </p>
-        <button>Show the property project</button>
+        <button onClick={() => {}}>Show the property project</button>
       </div>
     </div>
     </div>
