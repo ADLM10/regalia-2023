@@ -5,6 +5,7 @@ import { useState } from "react";
 import './components/styles.css';
 import localFont from '@next/font/local';
 import Hero from "../pages/components/hero"
+import "../styles/globals.css"
 
 const myFont = localFont({ src: '../public/fonts/Gismo-Trial-Round.woff2' })
 export default function App({
