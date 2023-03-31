@@ -72,6 +72,7 @@ battle of bands, an instrumental competition and more.The fest will also feature
       </p> */}
     </div>
     <Pass/>
+    <header>Events</header>
     <Card/>
     </div>
     </>

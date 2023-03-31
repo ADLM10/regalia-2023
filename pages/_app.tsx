@@ -6,6 +6,7 @@ import './../styles/styles.css';
 import localFont from '@next/font/local';
 import Hero from "./../components/hero"
 import "../styles/globals.css"
+import Script from 'next/script'
 
 const myFont = localFont({ src: '../public/fonts/Gismo-Trial-Round.woff2' })
 export default function App({
@@ -22,6 +23,7 @@ export default function App({
       initialSession={pageProps.initialSession}
     >
       <div className={myFont.className}>
+      <Script src="../path/to/flowbite/dist/flowbite.min.js"/>
       <Component {...pageProps} />
       <Hero/>
       </div>
