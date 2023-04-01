@@ -4,7 +4,7 @@ import Pass from "./../components/pass";
 import Card from "./../components/card";
 import Tabs from "./../components/Tabs";
 import { Data } from "./../utils/data/Data";
-
+import Navbar from './navbar'
 interface Item {
   heading: string;
   description: string;
@@ -13,6 +13,7 @@ interface Item {
 const hero = () => {
   return (
     <>
+    <Navbar />
       <div className="landing-page">
         <div className="hero-section">
           <div
@@ -113,7 +114,7 @@ const hero = () => {
             />
           ))}
         </div>
-        <Tabs />
+        {/* <Tabs /> */}
       </div>
     </>
   );
