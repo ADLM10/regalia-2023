@@ -7,9 +7,7 @@ const Tabs = () => {
         <li>Tab 1</li>
         <li>Tab 2</li>
       </ul>
-      <div className="outlet">
-        {/* content will be shown here */}
-      </div>
+      <div className="outlet">{/* content will be shown here */}</div>
     </div>
   );
 };

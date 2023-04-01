@@ -10,7 +10,6 @@ const EventDataModal = ({
   eventData: any;
   closeModal: any;
 }) => {
-
   return (
     <>
       {showModal && (
@@ -40,17 +39,14 @@ const EventDataModal = ({
               >
                 Close
               </button>
-              
-
-              </div>
-              <div
+            </div>
+            <div
               className="h-96 mt-10 w-full text-white text-left text-sm font-extralight overflow-y-scroll"
               // style={{
               //   fontWeight: 100,
               // }}
-              dangerouslySetInnerHTML={{ __html: eventData.rules_regulations}}
-              >
-            </div>
+              dangerouslySetInnerHTML={{ __html: eventData.rules_regulations }}
+            ></div>
           </div>
         </div>
       )}

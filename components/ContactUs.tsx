@@ -37,7 +37,9 @@ const ContactUs = () => {
             <h3 className="text-violet-600">Coordinators</h3>
             <div className="flex flex-wrap gap-2 mt-2 justify-between">
               <div className="">
-                <h4 className="font-bold text-base tracking-wider">Pritam Sarkar</h4>
+                <h4 className="font-bold text-base tracking-wider">
+                  Pritam Sarkar
+                </h4>
                 <a
                   href={"tel:+91 89189 69446"}
                   className="md:font-medium text-base"
@@ -46,7 +48,9 @@ const ContactUs = () => {
                 </a>
               </div>
               <div className="">
-                <h4 className="font-bold text-base tracking-wider">Sanmoy Mallick</h4>
+                <h4 className="font-bold text-base tracking-wider">
+                  Sanmoy Mallick
+                </h4>
                 <a
                   href={"tel:+91 94330 18776"}
                   className="md:font-medium text-base"
@@ -55,7 +59,9 @@ const ContactUs = () => {
                 </a>
               </div>
               <div className="">
-                <h4 className="font-bold text-base tracking-wider">Adrita Dutta</h4>
+                <h4 className="font-bold text-base tracking-wider">
+                  Adrita Dutta
+                </h4>
                 <a
                   href={"tel:+91 98364 45449"}
                   className="md:font-medium text-base"

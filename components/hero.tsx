@@ -7,7 +7,7 @@ import ContactUs from "./ContactUs";
 import Tabs from "./../components/Tabs";
 import { Data } from "./../utils/data/Data";
 import Footer from "./Footer";
-import Navbar from './navbar'
+import Navbar from "./navbar";
 interface Item {
   heading: string;
   description: string;
@@ -16,7 +16,7 @@ interface Item {
 const hero = () => {
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="landing-page">
         <div className="hero-section">
           <div
@@ -104,20 +104,10 @@ const hero = () => {
             more.The fest will also feature performances by renowned artists and
             celebrities.
           </p>
-          {/* <p className='content-box'>
-        The fest will also feature performances by renowned artists and
-  celebrities. The organizing committee of Regalia 2023 has put in
-  months of effort and planning to ensure that the fest is a grand
-  success and provides a memorable experience for all participants.
-  Regalia 2023 promises to be a celebration of art, culture, creativity,
-  and talent.
-      </p> */}
         </div>
         <Pass />
-        <header className="text-3xl font-bold underline">Events</header>
+        <header>Events</header>
       </div>
-      <Pass />
-      <header>Events</header>
       <div className="event-card">
         {Data.map((item: Item, index: number) => (
           <Card
