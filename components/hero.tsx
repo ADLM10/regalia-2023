@@ -6,6 +6,7 @@ import ContactUs from "./ContactUs";
 
 import Tabs from "./../components/Tabs";
 import { Data } from "./../utils/data/Data";
+import Footer from "./Footer";
 
 interface Item {
   heading: string;
@@ -113,21 +114,22 @@ const hero = () => {
         </div>
         <Pass />
         <header className="text-3xl font-bold underline">Events</header>
-        </div>
-        <Pass />
-        <header>Events</header>
-        <div className="event-card">
-          {Data.map((item: Item, index: number) => (
-            <Card
+      </div>
+      <Pass />
+      <header>Events</header>
+      <div className="event-card">
+        {Data.map((item: Item, index: number) => (
+          <Card
             key={index}
             imageSrc={item.imageSrc}
             heading={item.heading}
             description={item.description}
-            />
-            ))}
-        </div>
-            <ContactUs />
-        <Tabs />
+          />
+        ))}
+      </div>
+      <Tabs />
+      <ContactUs />
+      <Footer />
     </>
   );
 };
