@@ -2,8 +2,11 @@ import Image from "next/image";
 import BandBash from "./../public/images/regalia-bandbash.jpg";
 import Pass from "./../components/pass";
 import Card from "./../components/card";
+import ContactUs from "./ContactUs";
+
 import Tabs from "./../components/Tabs";
 import { Data } from "./../utils/data/Data";
+import Footer from "./Footer";
 import Navbar from './navbar'
 interface Item {
   heading: string;
@@ -101,21 +104,33 @@ const hero = () => {
             more.The fest will also feature performances by renowned artists and
             celebrities.
           </p>
+          {/* <p className='content-box'>
+        The fest will also feature performances by renowned artists and
+  celebrities. The organizing committee of Regalia 2023 has put in
+  months of effort and planning to ensure that the fest is a grand
+  success and provides a memorable experience for all participants.
+  Regalia 2023 promises to be a celebration of art, culture, creativity,
+  and talent.
+      </p> */}
         </div>
         <Pass />
-        <header>Events</header>
-        <div className="event-card">
-          {Data.map((item: Item, index: number) => (
-            <Card
-              key={index}
-              imageSrc={item.imageSrc}
-              heading={item.heading}
-              description={item.description}
-            />
-          ))}
-        </div>
-        {/* <Tabs /> */}
+        <header className="text-3xl font-bold underline">Events</header>
       </div>
+      <Pass />
+      <header>Events</header>
+      <div className="event-card">
+        {Data.map((item: Item, index: number) => (
+          <Card
+            key={index}
+            imageSrc={item.imageSrc}
+            heading={item.heading}
+            description={item.description}
+          />
+        ))}
+      </div>
+      {/* <Tabs /> */}
+      <ContactUs />
+      <Footer />
     </>
   );
 };
