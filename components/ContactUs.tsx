@@ -3,7 +3,7 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className="w-full md:w-3/4 bg-black text-white rounded-lg py-4">
+    <div className="w-full md:w-3/4 bg-black text-white rounded-lg py-4 mx-auto mt-4">
       <h1 className="text-3xl mx-auto mb-3" style={{ width: "90%" }}>
         Contact Us
       </h1>
@@ -23,7 +23,7 @@ const ContactUs = () => {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <div>
+        <div className="w-full">
           <div className="">
             <h3 className="text-violet-600">Email</h3>
             <Link
@@ -35,7 +35,7 @@ const ContactUs = () => {
           </div>
           <div className="mt-4">
             <h3 className="text-violet-600">Coordinators</h3>
-            <div className="flex flex-wrap gap-2 mt-2">
+            <div className="flex flex-wrap gap-2 mt-2 justify-between">
               <div className="">
                 <h4 className="font-bold text-base tracking-wider">Pritam Sarkar</h4>
                 <a

@@ -4,6 +4,14 @@ import Pass from "./../components/pass";
 import Card from "./../components/card";
 import ContactUs from "./ContactUs";
 
+import Tabs from "./../components/Tabs";
+import { Data } from "./../utils/data/Data";
+
+interface Item {
+  heading: string;
+  description: string;
+  imageSrc?: string;
+}
 const hero = () => {
   return (
     <>
@@ -105,9 +113,21 @@ const hero = () => {
         </div>
         <Pass />
         <header className="text-3xl font-bold underline">Events</header>
-        <Card />
-        <ContactUs />
-      </div>
+        </div>
+        <Pass />
+        <header>Events</header>
+        <div className="event-card">
+          {Data.map((item: Item, index: number) => (
+            <Card
+            key={index}
+            imageSrc={item.imageSrc}
+            heading={item.heading}
+            description={item.description}
+            />
+            ))}
+        </div>
+            <ContactUs />
+        <Tabs />
     </>
   );
 };

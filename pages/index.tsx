@@ -1,6 +1,6 @@
 import Head from "next/head";
-import localFont from '@next/font/local';
-import Hero from "./../components/hero"
+import localFont from "@next/font/local";
+import Hero from "./../components/hero";
 import data from "../public/data.json";
 
 // export async function getServerSideProps() {
@@ -22,7 +22,7 @@ export default function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-      <Hero/>
+        <Hero />
       </main>
     </>
   );
