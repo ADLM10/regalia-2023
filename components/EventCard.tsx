@@ -1,4 +1,3 @@
-import { Modal } from "flowbite";
 import Image from "next/image";
 import { useState } from "react";
 import EventDataModal from "./Modals/EventDataModal";

@@ -4,29 +4,15 @@ import data from "../public/data.json";
 import NavBar from "@/components/navbar";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
-import { Data } from "./../utils/data/Data";
-import { Card } from "flowbite-react";
-import { supabase } from "@/utils/supabaseClient";
 import { getEvents } from "@/utils/getEvents";
+import { Database } from "@/types/supabase";
+import Card from "@/components/card";
 
-// export async function getServerSideProps() {
-//   // Fetch data from external API
-//   const res = await fetch(`public/data.json`);
-//   const data = await res.json();
-
-//   // Pass data to the page via props
-//   return { props: { data } };
-// }
-
-// interface Item {
-//   name: string;
-//   details: string;
-//   poster_image?: string;
-// }
-
-export default function Home({ events }: { events: any }): JSX.Element {
-  console.log(events);
-
+export default function Home({
+  events,
+}: {
+  events: Database["public"]["Tables"]["events"]["Row"][];
+}): JSX.Element {
   return (
     <>
       <Head>
@@ -39,9 +25,14 @@ export default function Home({ events }: { events: any }): JSX.Element {
       <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
         <Hero />
         <div className="event-card">
-          {events.map((item: any, index: number) => (
-            <Card key={index} eventData={item} />
-          ))}
+          {events.map(
+            (
+              item: Database["public"]["Tables"]["events"]["Row"],
+              index: number
+            ) => (
+              <Card key={`events__${index}`} eventData={item} />
+            )
+          )}
         </div>
         <ContactUs />
         <Footer />

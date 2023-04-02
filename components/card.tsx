@@ -1,10 +1,16 @@
+import { Database } from "@/types/supabase";
 import Image from "next/image";
-const card = ({ eventData }: { eventData: any }) => {
+
+const Card = ({
+  eventData,
+}: {
+  eventData: Database["public"]["Tables"]["events"]["Row"];
+}) => {
   const { name, details, poster_image } = eventData;
 
   return (
     <div className="card">
-      <Image src={poster_image} alt="" />
+      <Image src={poster_image ?? ""} alt="" width={200} height={200} />
       <div>
         <h2 className="text-3xl font-bold">{name}</h2>
         <p>{details}</p>
@@ -14,4 +20,4 @@ const card = ({ eventData }: { eventData: any }) => {
   );
 };
 
-export default card;
+export default Card;
