@@ -3,12 +3,13 @@ import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
 import { AppProps } from "next/app";
 import { useState } from "react";
 import "./../styles/styles.css";
-import localFont from "@next/font/local";
 import Hero from "./../components/hero";
+import localFont from "next/font/local";
 import "../styles/globals.css";
 import Script from "next/script";
 
 const myFont = localFont({ src: "../public/fonts/Gismo-Trial-Round.woff2" });
+
 export default function App({
   Component,
   pageProps,

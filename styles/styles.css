@@ -190,10 +190,10 @@ svg:hover .textcircle {
   align-items: center;
   justify-content: center;
 }
-.contact-us{
+.contact-us {
   font-family: "Unbounded", cursive;
 }
-footer{
+footer {
   font-family: "Unbounded", cursive;
 }
 .event-card {
@@ -300,7 +300,7 @@ footer{
     font-size: 1rem;
     padding: 1.5rem;
   }
-  .content{
+  .content {
     height: auto !important;
   }
   .content-box1 {
@@ -311,22 +311,22 @@ footer{
     width: 80vw !important;
     position: unset;
   }
-  .image{
+  .image {
     display: none;
   }
-  .pass{
+  .pass {
     height: 20rem;
   }
-  .qr-slip{
+  .qr-slip {
     width: 10rem;
   }
-  .main-slip{
+  .main-slip {
     width: 60vw;
   }
-  .qr{
+  .qr {
     display: none;
   }
-  .pass-name{
+  .pass-name {
     font-size: 2rem !important;
   }
 }

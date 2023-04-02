@@ -1,5 +1,4 @@
 import Head from "next/head";
-import localFont from "@next/font/local";
 import Hero from "./../components/hero";
 import data from "../public/data.json";
 
