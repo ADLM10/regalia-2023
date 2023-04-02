@@ -6,11 +6,15 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import "@/styles/globals.css";
 import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
+import GetUser from "@/hooks/getUser";
+import NavBar from "@/components/navbar";
 
 const myFont = localFont({ src: "../public/fonts/Gismo-Trial-Round.woff2" });
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
+
+  const { isLoading, userObject } = GetUser();
 
   useEffect(() => {
     const start = () => {
@@ -27,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
       Router.events.off("routeChangeComplete", end);
       Router.events.off("routeChangeError", end);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -38,7 +43,8 @@ export default function App({ Component, pageProps }: AppProps) {
       ) : (
         <div className={myFont.className}>
           <Script src="../path/to/flowbite/dist/flowbite.min.js" />
-          <Component {...pageProps} />
+          <NavBar user={userObject} />
+          <Component {...pageProps} user={userObject} isLoading={isLoading} />
         </div>
       )}
     </>

@@ -7,11 +7,16 @@ import Footer from "@/components/Footer";
 import { getEvents } from "@/utils/getEvents";
 import { Database } from "@/types/supabase";
 import Card from "@/components/card";
+import { User, UserResponse } from "@supabase/supabase-js";
 
 export default function Home({
   events,
+  user,
+  isLoading,
 }: {
   events: Database["public"]["Tables"]["events"]["Row"][];
+  user: User | null | UserResponse;
+  isLoading: boolean;
 }): JSX.Element {
   return (
     <>
@@ -21,7 +26,6 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
       <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
         <Hero />
         <div className="event-card">

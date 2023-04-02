@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { User } from "@supabase/supabase-js";
+import { login } from "@/utils/login";
 
-export default function NavBar() {
+export default function NavBar({ user }: { user: User | null }) {
+  console.log(typeof user);
   const [navbar, setNavbar] = useState(false);
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <nav className="w-full bg-transparent shadow fixed z-20 bg-gradient-to-tr from-black to-fuchsia-950">
@@ -72,23 +73,10 @@ export default function NavBar() {
               <li className="text-white hover:text-blue-600">
                 <Link href="/#contact">Contact Us</Link>
               </li>
-              {/* {isLoggedIn ? (
-                <li className="text-white hover:text-blue-600">
-                  <Link href="/dashboard">Dashboard</Link>
-                </li>
-              ) : (
-                <li className="text-white hover:text-blue-600">
-                  <button
-                    
-                  >
-                    Login!
-                  </button>
-                </li>
-              )} */}
             </ul>
           </div>
         </div>
-        {isLoggedIn ? (
+        {user ? (
           <button
             className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
             style={{
@@ -102,6 +90,9 @@ export default function NavBar() {
             className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
             style={{
               fontFamily: "Unbounded, cursive",
+            }}
+            onClick={async () => {
+              await login();
             }}
           >
             Register
