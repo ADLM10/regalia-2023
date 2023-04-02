@@ -8,13 +8,9 @@ const GetUser = () => {
   const [isLoading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    supabase.auth.getUser().then((user) => {
-      if ({ data: { user }, error: { Error } }) {
-        if (Error) {
-          throw Error;
-        } else {
-          setUserObject(user as unknown as User);
-        }
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) {
+        setUserObject(user as unknown as User);
       }
       setLoading(false);
     });

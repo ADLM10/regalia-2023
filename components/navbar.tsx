@@ -5,7 +5,6 @@ import { User } from "@supabase/supabase-js";
 import { login } from "@/utils/login";
 
 export default function NavBar({ user }: { user: User | null }) {
-  console.log(typeof user);
   const [navbar, setNavbar] = useState(false);
 
   return (
