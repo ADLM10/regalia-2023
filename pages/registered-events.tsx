@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import localData from "../public/data.json";
 
-export default function Events({
+export default function RegisteredEvents({
   events,
 }: {
   events: Database["public"]["Tables"]["events"]["Row"][];
@@ -14,8 +14,8 @@ export default function Events({
   return (
     <>
       <Head>
-        <title>{localData["title"] + " Events"}</title>
-        <meta name="description" content="Regalia Events" />
+        <title>{localData["title"] + " Registered Events"}</title>
+        <meta name="description" content="Registered Events" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

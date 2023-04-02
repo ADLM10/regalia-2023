@@ -1,7 +1,6 @@
 import { AppProps } from "next/app";
 import "./../styles/styles.css";
 import localFont from "next/font/local";
-import Script from "next/script";
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import "@/styles/globals.css";
@@ -35,18 +34,17 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
+    <div className={myFont.className}>
+      <NavBar user={userObject} />
       {loading ? (
         <span className="flex flex-col justify-center items-center h-screen w-screen">
           <LoadingSpinner />
         </span>
       ) : (
-        <div className={myFont.className}>
-          <Script src="../path/to/flowbite/dist/flowbite.min.js" />
-          <NavBar user={userObject} />
+        <>
           <Component {...pageProps} user={userObject} isLoading={isLoading} />
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
 }
