@@ -2,6 +2,13 @@ import Head from "next/head";
 import localFont from "@next/font/local";
 import Hero from "./../components/hero";
 import data from "../public/data.json";
+import NavBar from "@/components/navbar";
+import ContactUs from "@/components/ContactUs";
+import Footer from "@/components/Footer";
+import { Data } from "./../utils/data/Data";
+import { Card } from "flowbite-react";
+import { supabase } from "@/utils/supabaseClient";
+import { getEvents } from "@/utils/getEvents";
 
 // export async function getServerSideProps() {
 //   // Fetch data from external API
@@ -12,7 +19,15 @@ import data from "../public/data.json";
 //   return { props: { data } };
 // }
 
-export default function Home(): JSX.Element {
+// interface Item {
+//   name: string;
+//   details: string;
+//   poster_image?: string;
+// }
+
+export default function Home({ events }: { events: any }): JSX.Element {
+  console.log(events);
+
   return (
     <>
       <Head>
@@ -21,9 +36,33 @@ export default function Home(): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <NavBar />
+      <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
         <Hero />
+        <div className="event-card">
+          {/* {events.map((item: any, index: number) => (
+            <Card key={index} eventData={item} />
+          ))} */}
+        </div>
+        <ContactUs />
+        <Footer />
       </main>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  let data;
+
+  try {
+    data = await getEvents("name, details, poster_image,rules_regulations");
+  } catch (err) {
+    console.log(err);
+  }
+
+  return {
+    props: {
+      events: data,
+    },
+  };
 }

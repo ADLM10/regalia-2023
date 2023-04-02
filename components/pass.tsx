@@ -25,10 +25,7 @@ const pass = () => {
         <Image src={BarCode} alt="" />
       </div>
       <div className="main-slip">
-        <header
-          className=" pass-name flex justify-center">
-          Regalia 2023
-        </header>
+        <header className=" pass-name flex justify-center">Regalia 2023</header>
         <div className="flex flex-row">
           <Image src={RockSticker} alt="" />
           <Image src={Confetti} alt="" />

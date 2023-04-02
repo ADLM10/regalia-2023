@@ -4,9 +4,7 @@ import React from "react";
 const ContactUs = () => {
   return (
     <div className="w-full py-4 mx-auto mt-4 text-white bg-black rounded-2xl md:w-3/4">
-      <header className="flex justify-center">
-        Contact Us
-      </header>
+      <header className="flex justify-center text-center">Contact Us</header>
       <div
         className=" contact-us flex flex-wrap items-center justify-between gap-5 mx-auto text-3xl"
         style={{ width: "90%" }}

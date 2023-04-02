@@ -9,7 +9,7 @@
   background: rgb(0, 0, 0);
 }
 header {
-  font-size: 6rem;
+  font-size: 4rem;
 }
 
 subheader {
@@ -25,7 +25,7 @@ subheader {
 .hero-text {
   font-size: 12rem;
   line-height: 12rem;
-  font-weight: 900;
+  font-weight: 400;
   color: transparent;
   /* background-image: url(../../public/images/regalia.jpg); */
   background-clip: text;
@@ -48,10 +48,10 @@ subheader {
   font-weight: 800;
   justify-content: center;
   text-align: center;
-  background-color: black;
-  color: white;
-  font-size: 3rem;
-  padding: 3rem;
+  background-color: white;
+  color: black;
+  font-size: 2rem;
+  padding: 1.5rem;
   cursor: pointer;
   border-radius: 200px;
   -webkit-border-radius: 200px;
@@ -61,8 +61,8 @@ subheader {
 }
 
 .primary-button:hover {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: blueviolet;
+  color: white;
 }
 
 .hero-section {
@@ -71,7 +71,6 @@ subheader {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 4rem;
 }
 .text-circle {
   fill: rgb(0, 0, 0);
@@ -190,10 +189,10 @@ svg:hover .textcircle {
   align-items: center;
   justify-content: center;
 }
-.contact-us{
+.contact-us {
   font-family: "Unbounded", cursive;
 }
-footer{
+footer {
   font-family: "Unbounded", cursive;
 }
 .event-card {
@@ -256,7 +255,6 @@ footer{
 }
 .navbar {
   font-family: "Unbounded", cursive;
-  padding: 2rem 10rem !important;
 }
 @keyframes scroll {
   0% {
@@ -300,7 +298,7 @@ footer{
     font-size: 1rem;
     padding: 1.5rem;
   }
-  .content{
+  .content {
     height: auto !important;
   }
   .content-box1 {
@@ -311,22 +309,22 @@ footer{
     width: 80vw !important;
     position: unset;
   }
-  .image{
+  .image {
     display: none;
   }
-  .pass{
+  .pass {
     height: 20rem;
   }
-  .qr-slip{
+  .qr-slip {
     width: 10rem;
   }
-  .main-slip{
+  .main-slip {
     width: 60vw;
   }
-  .qr{
+  .qr {
     display: none;
   }
-  .pass-name{
+  .pass-name {
     font-size: 2rem !important;
   }
 }

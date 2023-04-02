@@ -1,4 +1,5 @@
 import EventCard from "@/components/EventCard";
+import NavBar from "@/components/navbar";
 import { supabase } from "@/utils/supabaseClient";
 import Head from "next/head";
 import Image from "next/image";
@@ -14,9 +15,10 @@ export default function Events({ events }: { events: any }): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <NavBar />
       <main
         className="h-full w-full 
-       bg-gradient-to-tl from-fuchsia-950 to-black z-10 relative"
+        bg-gradient-to-tl from-fuchsia-950 to-black z-10 relative pt-16"
       >
         <div className="flex flex-col justify-start items-left ">
           <h1 className="text-5xl text-left font-normal text-white px-10 pt-10">

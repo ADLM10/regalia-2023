@@ -30,7 +30,14 @@ const EventCard = ({ eventData }: any) => {
         </div>
         <div>
           <h1 className="text-2xl font-semibold text-black mt-4">{name}</h1>
-          <p className="text-sm text-black mt-2 font-extralight">{details}</p>
+          <p
+            className="text-sm text-black mt-2 font-normal"
+            style={{
+              fontFamily: "Unbounded, cursive",
+            }}
+          >
+            {details}
+          </p>
         </div>
       </div>
       <EventDataModal

@@ -5,29 +5,25 @@ import Card from "./../components/card";
 import ContactUs from "./ContactUs";
 
 import Tabs from "./../components/Tabs";
-import { Data } from "./../utils/data/Data";
+
 import Footer from "./Footer";
-import Navbar from "./navbar";
-interface Item {
-  heading: string;
-  description: string;
-  imageSrc?: string;
-}
+
 const hero = () => {
   return (
     <>
-      <Navbar />
-      <div className="landing-page">
-        <div className="hero-section">
+      <div className="landing-page pb-10">
+        <div className="hero-section gap-5 md:gap-32">
           <div
-            className="hero-text"
+            className="hero-text "
             style={{
-              backgroundImage: `url(/images/regalia.jpg)`,
-              backgroundSize: "cover",
+              // backgroundImage: `url("./images/regalia.jpg")`,
+              backgroundColor: "white",
+              backgroundSize: "contain",
+              // backgroundPosition: "top",
               backgroundClip: "text",
             }}
           >
-            regalia
+            Regalia
             <br />
             2023
           </div>
@@ -65,9 +61,10 @@ const hero = () => {
               </g>
             </svg>
           </div>
+          <button className="primary-button mb-10">Register Now</button>
         </div>
-        <button className="primary-button">Register Now</button>
-        <div className="content">
+      </div>
+      {/* <div className="content">
           <p className="content-box1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -107,20 +104,9 @@ const hero = () => {
         </div>
         <Pass />
         <header className="p-8">Events</header>
-      </div>
-      <div className="event-card">
-        {Data.map((item: Item, index: number) => (
-          <Card
-            key={index}
-            imageSrc={item.imageSrc}
-            heading={item.heading}
-            description={item.description}
-          />
-        ))}
-      </div>
+      </div>} */}
+
       {/* <Tabs /> */}
-      <ContactUs />
-      <Footer />
     </>
   );
 };

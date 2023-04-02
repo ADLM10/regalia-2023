@@ -41,10 +41,10 @@ const EventDataModal = ({
               </button>
             </div>
             <div
-              className="h-96 mt-10 w-full text-white text-left text-sm font-extralight overflow-y-scroll"
-              // style={{
-              //   fontWeight: 100,
-              // }}
+              className="h-96 mt-10 w-full text-white text-left text-sm font-normal overflow-y-scroll"
+              style={{
+                fontFamily: "Unbounded, cursive",
+              }}
               dangerouslySetInnerHTML={{ __html: eventData.rules_regulations }}
             ></div>
           </div>
