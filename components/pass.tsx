@@ -26,7 +26,7 @@ const pass = () => {
       </div>
       <div className="main-slip">
         <header
-          className="flex justify-center">
+          className=" pass-name flex justify-center">
           Regalia 2023
         </header>
         <div className="flex flex-row">

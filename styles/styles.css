@@ -157,6 +157,7 @@ svg:hover .textcircle {
   flex-direction: row;
   gap: 0px;
   margin: 3rem;
+  height: 30rem;
 }
 
 .qr-slip {
@@ -166,7 +167,6 @@ svg:hover .textcircle {
   justify-content: space-evenly;
   background-color: blueviolet;
   width: 15vw;
-  height: 500px;
   border-right: 2px dashed #ffffff;
   border-radius: 20px;
   -webkit-border-radius: 30px;
@@ -181,7 +181,6 @@ svg:hover .textcircle {
   display: flex;
   flex-direction: column;
   width: 50vw;
-  height: 500px;
   background-color: blueviolet;
   border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -314,5 +313,20 @@ footer{
   }
   .image{
     display: none;
+  }
+  .pass{
+    height: 20rem;
+  }
+  .qr-slip{
+    width: 10rem;
+  }
+  .main-slip{
+    width: 60vw;
+  }
+  .qr{
+    display: none;
+  }
+  .pass-name{
+    font-size: 2rem !important;
   }
 }
