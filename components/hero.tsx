@@ -106,7 +106,7 @@ const hero = () => {
           </p>
         </div>
         <Pass />
-        <header>Events</header>
+        <header className="p-8">Events</header>
       </div>
       <div className="event-card">
         {Data.map((item: Item, index: number) => (

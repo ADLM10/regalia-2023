@@ -191,7 +191,12 @@ svg:hover .textcircle {
   align-items: center;
   justify-content: center;
 }
-
+.contact-us{
+  font-family: "Unbounded", cursive;
+}
+footer{
+  font-family: "Unbounded", cursive;
+}
 .event-card {
   display: flex;
   flex-direction: row;
@@ -296,8 +301,18 @@ svg:hover .textcircle {
     font-size: 1rem;
     padding: 1.5rem;
   }
+  .content{
+    height: auto !important;
+  }
   .content-box1 {
     width: 80vw !important;
     position: unset;
+  }
+  .content-box2 {
+    width: 80vw !important;
+    position: unset;
+  }
+  .image{
+    display: none;
   }
 }

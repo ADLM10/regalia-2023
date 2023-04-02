@@ -26,21 +26,8 @@ const pass = () => {
       </div>
       <div className="main-slip">
         <header
-          className="flex flex-col"
-          style={{ color: "white", alignItems: "flex-end" }}
-        >
+          className="flex justify-center">
           Regalia 2023
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="100"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="white"
-              d="M13 18v-8l3.5 3.5l1.42-1.42L12 6.16l-5.92 5.92L7.5 13.5L11 10v8h2M12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2Z"
-            />
-          </svg>
         </header>
         <div className="flex flex-row">
           <Image src={RockSticker} alt="" />

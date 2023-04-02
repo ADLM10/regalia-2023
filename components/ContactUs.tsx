@@ -3,12 +3,12 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div id='contact-us' className="w-full py-4 mx-auto mt-4 text-white bg-black rounded-lg md:w-3/4">
-      <header>
+    <div className="w-full py-4 mx-auto mt-4 text-white bg-black rounded-2xl md:w-3/4">
+      <header className="flex justify-center">
         Contact Us
       </header>
       <div
-        className="flex flex-wrap items-center justify-between gap-5 mx-auto text-3xl"
+        className=" contact-us flex flex-wrap items-center justify-between gap-5 mx-auto text-3xl"
         style={{ width: "90%" }}
       >
         <div className="w-full sm:w-full md:w-full lg:w-1/2">
@@ -25,7 +25,7 @@ const ContactUs = () => {
         </div>
         <div className="w-full">
           <div className="">
-            <h3 className="text-violet-600">Email</h3>
+            <h3 className="text-violet-600 font-bold">Email</h3>
             <Link
               href={"mailto:rcciit.regalia.official@gmail.com"}
               className="text-base md:font-medium"
@@ -34,7 +34,7 @@ const ContactUs = () => {
             </Link>
           </div>
           <div className="mt-4">
-            <h3 className="text-violet-600">Coordinators</h3>
+            <h3 className="text-violet-600 font-bold">Coordinators</h3>
             <div className="flex flex-wrap justify-between gap-2 mt-2">
               <div className="">
                 <h4 className="text-base font-bold tracking-wider">
