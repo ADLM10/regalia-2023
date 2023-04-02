@@ -3,12 +3,12 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className="w-full md:w-3/4 bg-black text-white rounded-lg py-4 mx-auto mt-4">
-      <h1 className="text-3xl mx-auto mb-3" style={{ width: "90%" }}>
+    <div id='contact-us' className="w-full py-4 mx-auto mt-4 text-white bg-black rounded-lg md:w-3/4">
+      <header>
         Contact Us
-      </h1>
+      </header>
       <div
-        className="text-3xl flex mx-auto gap-5 flex-wrap items-center justify-between"
+        className="flex flex-wrap items-center justify-between gap-5 mx-auto text-3xl"
         style={{ width: "90%" }}
       >
         <div className="w-full sm:w-full md:w-full lg:w-1/2">
@@ -17,7 +17,7 @@ const ContactUs = () => {
             // width="600"
             height="300"
             style={{ border: "0" }}
-            className="rounded-lg w-full"
+            className="w-full rounded-lg"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -28,43 +28,43 @@ const ContactUs = () => {
             <h3 className="text-violet-600">Email</h3>
             <Link
               href={"mailto:rcciit.regalia.official@gmail.com"}
-              className="md:font-medium text-base"
+              className="text-base md:font-medium"
             >
               Mail Us
             </Link>
           </div>
           <div className="mt-4">
             <h3 className="text-violet-600">Coordinators</h3>
-            <div className="flex flex-wrap gap-2 mt-2 justify-between">
+            <div className="flex flex-wrap justify-between gap-2 mt-2">
               <div className="">
-                <h4 className="font-bold text-base tracking-wider">
+                <h4 className="text-base font-bold tracking-wider">
                   Pritam Sarkar
                 </h4>
                 <a
                   href={"tel:+91 89189 69446"}
-                  className="md:font-medium text-base"
+                  className="text-base md:font-medium"
                 >
                   +91 89189 69446
                 </a>
               </div>
               <div className="">
-                <h4 className="font-bold text-base tracking-wider">
+                <h4 className="text-base font-bold tracking-wider">
                   Sanmoy Mallick
                 </h4>
                 <a
                   href={"tel:+91 94330 18776"}
-                  className="md:font-medium text-base"
+                  className="text-base md:font-medium"
                 >
                   +91 94330 18776
                 </a>
               </div>
               <div className="">
-                <h4 className="font-bold text-base tracking-wider">
+                <h4 className="text-base font-bold tracking-wider">
                   Adrita Dutta
                 </h4>
                 <a
                   href={"tel:+91 98364 45449"}
-                  className="md:font-medium text-base"
+                  className="text-base md:font-medium"
                 >
                   +91 98364 45449
                 </a>
