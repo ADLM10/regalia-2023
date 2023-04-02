@@ -1,5 +1,4 @@
 import Head from "next/head";
-import localFont from "@next/font/local";
 import Hero from "./../components/hero";
 import data from "../public/data.json";
 import NavBar from "@/components/navbar";
@@ -40,9 +39,9 @@ export default function Home({ events }: { events: any }): JSX.Element {
       <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
         <Hero />
         <div className="event-card">
-          {/* {events.map((item: any, index: number) => (
+          {events.map((item: any, index: number) => (
             <Card key={index} eventData={item} />
-          ))} */}
+          ))}
         </div>
         <ContactUs />
         <Footer />
