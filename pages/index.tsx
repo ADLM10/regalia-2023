@@ -10,6 +10,7 @@ import { User } from "@supabase/supabase-js";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import Sponsors from "@/components/Sponsors";
 
 const EventRegistrationModal = dynamic(
   () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
@@ -87,6 +88,7 @@ export default function Home({
             )
           )}
         </div>
+        <Sponsors />
         <ContactUs />
         <Footer />
         <Image

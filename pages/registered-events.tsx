@@ -154,7 +154,7 @@ export default function RegisteredEvents({
             : "h-screen"
         }`}
       >
-        <h1 className="text-5xl font-semibold text-center text-white dark:text-gray-100">
+        <h1 className="text-5xl font-normal text-center text-white dark:text-gray-100">
           Registered Events
         </h1>
         {data.length === 0 ? (
@@ -163,7 +163,11 @@ export default function RegisteredEvents({
           </span>
         ) : (
           <>
-            <span className="text-center flex flex-row flex-wrap items-start justify-center text-lg mt-4 text-gray-300">
+            <span className="text-center flex flex-row flex-wrap items-start justify-center text-lg mt-4 text-red-800"
+            style={{
+              fontFamily:"Unbounded,cursive"
+            }}
+            >
               Registration of only unpaid events can be cancelled!
             </span>
             <div className="flex flex-row flex-wrap items-start justify-center h-auto w-full">
@@ -171,55 +175,37 @@ export default function RegisteredEvents({
               {data.map((registrationData, index) => {
                 return (
                   <div
-                    className="flex flex-col items-center justify-center h-96 w-96 m-4  rounded-xl shadow-xl p-4 gap-2"
+                    className="flex flex-col justify-evenly items-center w-72 h-[400px] m-8 bg-white rounded-3xl shadow-lg p-4 z-10"
                     key={`event__${index}`}
                   >
-                    <div className="w-40 h-40 relative">
+                    <div
+                      className="w-full h-48 rounded-3xl relative "
+                      style={{
+                        overflow: "hidden",
+                      }}
+                    >
                       {registrationData.events && (
                         <Image
-                          className="event_logo"
                           src={`${registrationData.events.poster_image}.png`}
-                          alt=""
+                          alt="Event Poster"
                           fill
-                          style={{ objectFit: "contain" }}
+                          style={{ objectFit: "cover" }}
+                          className="rounded-3xl "
                         />
                       )}
                     </div>
-                    <h1 className="text-3xl font-thin text-center text-white dark:text-gray-100">
+                    <h1 className="text-3xl font-thin text-center text-black dark:text-gray-100">
                       {registrationData.events && registrationData.events.name}
                     </h1>
                     {registrationData.team_name && (
-                      <h1 className="text-xl font-semibold text-center text-white dark:text-gray-100">
+                      <h1 className="text-lg font-normal text-center text-black dark:text-gray-100"
+                      style={{
+                        fontFamily: "Unbounded,cursive",
+                      }}
+                      >
                         <b>Team Name:</b> {registrationData.team_name}
                       </h1>
                     )}
-                    {registrationData.team_name && (
-                      <h1 className="text-lg font-bold text-center text-white dark:text-gray-100">
-                        <b>Team Members:</b>
-                      </h1>
-                    )}
-                    {
-                      <ul className="text-base font-thin text-center text-white dark:text-gray-100">
-                        {registrationData.team_member_0 && (
-                          <li>{registrationData.team_member_0}</li>
-                        )}
-                        {registrationData.team_member_1 && (
-                          <li>{registrationData.team_member_1}</li>
-                        )}
-                        {registrationData.team_member_2 && (
-                          <li>{registrationData.team_member_2}</li>
-                        )}
-                        {registrationData.team_member_3 && (
-                          <li>{registrationData.team_member_3}</li>
-                        )}
-                        {registrationData.team_member_4 && (
-                          <li>{registrationData.team_member_4}</li>
-                        )}
-                        {registrationData.team_member_5 && (
-                          <li>{registrationData.team_member_5}</li>
-                        )}
-                      </ul>
-                    }
                     {registrationData.transaction_id === null &&
                       registrationData.transaction_verified === false &&
                       registrationData.registration_cancelled === false && (
@@ -260,7 +246,7 @@ export default function RegisteredEvents({
                               );
                             });
                           }}
-                          className="bg-green-700 text-white rounded py-2 px-4 hover:bg-green-800 action:bg-green-800"
+                          className="bg-green-700 text-black rounded py-2 px-4 hover:bg-green-800 action:bg-green-800"
                         >
                           Keep Registration
                         </button>
@@ -269,7 +255,7 @@ export default function RegisteredEvents({
                     {/* remove checkbox if registration is already cancelled */}
                     {registrationData.transaction_id === null &&
                       registrationData.registration_cancelled === false && (
-                        <span className="flex items-center text-white">
+                        <span className="flex items-center text-black">
                           <input
                             defaultChecked={checked[index]}
                             id="checked-checkbox"
@@ -290,9 +276,12 @@ export default function RegisteredEvents({
           </>
         )}
         {amount !== 0 && (
-          <span className="flex flex-row justify-center rounded mt-2 mb-4">
+          <span className="flex flex-row justify-center rounded  mb-4">
             <button
-              className="text-white bg-green-700 py-2 px-4 rounded hover:bg-green-800 action:bg-green-800"
+              className="text-black bg-white py-2 px-4 rounded hover:bg-[blueviolet] hover:text-white action:bg-green-800"
+              style={{
+                fontFamily: "Unbounded,cursive",
+              }}
               onClick={() => {
                 showPaymentModalHandler();
               }}
@@ -300,7 +289,7 @@ export default function RegisteredEvents({
           </span>
         )}
         <section className="pb-10">
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-10">
             <button
               onClick={
                 teamRegisteredEvents && teamRegisteredEvents.length > 0
@@ -313,7 +302,10 @@ export default function RegisteredEvents({
                       await getTeamRegisteredEvents();
                     }
               }
-              className="text-white button"
+              className="text-black bg-white py-2 px-4 rounded hover:bg-[blueviolet] hover:text-white action:bg-green-800"
+              style={{
+                fontFamily: "Unbounded,cursive",
+              }}
             >
               Team events where you are participating
             </button>
