@@ -204,10 +204,10 @@ export interface Database {
           id: string;
           is_rcc: boolean | null;
           name: string | null;
-          phone: number | null;
+          phone: string | null;
           role: string | null;
           swc_payment: boolean | null;
-          year: number | null;
+          year: string | null;
         };
         Insert: {
           college?: string | null;

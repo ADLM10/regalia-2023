@@ -15,7 +15,9 @@ import { ParticipatedEvents } from "@/types/ParticipatedEvents";
 import { supabase } from "@/utils/supabaseClient";
 import { getRegisteredEvents } from "@/utils/getRegisteredEvents";
 import { useRouter } from "next/router";
-import { redirect } from "next/navigation";
+import { isUserDetailsEmpty } from "@/utils/UserFunctions";
+import { ToastContainer } from "react-toastify";
+
 
 const EventRegistrationModal = dynamic(
   () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
@@ -71,6 +73,12 @@ export default function Home({
       user &&
       user.email &&
       Promise.all([
+        isUserDetailsEmpty().then((val) => {
+          if (val) {
+            router.push("/profile");
+          }
+        })
+        ,
         supabase
           .rpc("search_email_in_registered_event", {
             email: user.email,
@@ -177,6 +185,8 @@ export default function Home({
           style={{
             zIndex: 0,
           }}
+        />
+        <ToastContainer
         />
       </main>
       <EventRegistrationModal

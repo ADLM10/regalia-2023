@@ -323,34 +323,75 @@ export default function RegisteredEvents({
               isTeamRegisteredEventsExpanded ? (
                 <div className="flex flex-row flex-wrap items-start justify-center h-auto w-full">
                   {teamRegisteredEvents.map((registrationData, index) => {
+
+                    console.log(registrationData)
+
                     return (
                       <div
-                        className="flex flex-col items-center justify-center h-96 w-96 m-4  rounded-xl shadow-xl p-4 gap-2"
+                        className="flex flex-col justify-evenly items-center w-96 h-[400px] m-8 bg-white rounded-3xl shadow-lg p-4 z-10"
                         key={`team__events__${index}`}
                       >
-                        <h1 className="text-3xl font-thin text-center text-white dark:text-gray-100">
+                        <div
+                          className="w-full h-48 rounded-3xl relative "
+                          style={{
+                            overflow: "hidden",
+                          }}
+                        >
+                          {registrationData.events && (
+                            <Image
+                              src={`${registrationData.events.poster_image}.png`}
+                              alt="Event Poster"
+                              fill
+                              style={{ objectFit: "cover" }}
+                              className="rounded-3xl "
+                            />
+                          )}
+                        </div>
+                        <h1 className="text-3xl font-thin text-center text-black dark:text-gray-100">
                           {registrationData.events &&
                             registrationData.events.name}
                         </h1>
                         {registrationData.team_name && (
-                          <h1 className="text-xl font-semibold text-center text-white dark:text-gray-100">
+                          <h1
+                            className="text-xl font-normal text-center text-black dark:text-gray-100"
+                            style={{
+                              fontFamily: "Unbounded,cursive",
+                            }}
+                          >
                             <b>Team Name:</b> {registrationData.team_name}
                           </h1>
                         )}
                         {registrationData.team_name && (
-                          <h1 className="text-lg font-bold text-center text-white dark:text-gray-100">
+                          <h1
+                            className="text-lg font-bold text-center text-black dark:text-gray-100"
+                            style={{
+                              fontFamily: "Unbounded,cursive",
+                            }}
+                          >
                             <b>Registered by:</b>
                             <br></br>
-                            <span>{registrationData.registered_by}</span>
+                            <span className="text-base font-normal text-center text-black dark:text-gray-100">
+                              {registrationData.registered_by}
+                            </span>
                           </h1>
                         )}
                         {registrationData.team_name && (
-                          <h1 className="text-lg font-bold text-center text-white dark:text-gray-100">
+                          <h1
+                            className="text-lg font-normal text-center text-black dark:text-gray-100"
+                            style={{
+                              fontFamily: "Unbounded,cursive",
+                            }}
+                          >
                             <b>Team Members:</b>
                           </h1>
                         )}
                         {
-                          <ul className="text-base font-thin text-center text-white dark:text-gray-100">
+                          <ul
+                            className="text-base font-thin text-center text-black dark:text-gray-100"
+                            style={{
+                              fontFamily: "Unbounded,cursive",
+                            }}
+                          >
                             {registrationData.team_member_0 && (
                               <li>{registrationData.team_member_0}</li>
                             )}

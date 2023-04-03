@@ -11,11 +11,14 @@ export default function NavBar({ user }: { user: User | null }) {
 
   const [showSignOut, setShowSignOut] = useState(false);
 
+  const [dropdown, setDropdown] = useState(false);
+
+  console.log(user);
+
   useEffect(() => {
     if (user === null) {
       setShowSignOut(false);
-    }
-    else {
+    } else {
       setShowSignOut(true);
     }
   }, [user]);
@@ -33,6 +36,13 @@ export default function NavBar({ user }: { user: User | null }) {
                 height={100}
               />
             </a>
+            <Image
+              src={user?.user_metadata.avatar_url}
+              alt="avatar"
+              width={50}
+              height={50}
+              className="rounded-full md:hidden"
+            />
             <div className="md:hidden">
               <div
                 className="z-50 flex relative w-8 h-8 flex-col justify-between items-center md:hidden"
@@ -96,21 +106,32 @@ export default function NavBar({ user }: { user: User | null }) {
                   >
                     Registered Events
                   </Link>
+                  
                   {showSignOut && (
-                    <button
-                      className="block md:hidden text-center bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-red-800 hover:text-white transition duration-300 ease-in-out"
-                      style={{
-                        fontFamily: "Unbounded, cursive",
-                      }}
-                      onClick={() => {
-                        signOut()
-                        .then(() => {
-                          window.location.reload();
-                        })
-                      }}
-                    >
-                      Sign Out
-                    </button>
+                    <>
+                      <Link
+                        className="block md:hidden bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+                        style={{
+                          fontFamily: "Unbounded, cursive",
+                        }}
+                        href="/profile"
+                      >
+                        Edit Profile
+                      </Link>
+                      <button
+                        className="block md:hidden text-center bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-red-800 hover:text-white transition duration-300 ease-in-out"
+                        style={{
+                          fontFamily: "Unbounded, cursive",
+                        }}
+                        onClick={() => {
+                          signOut().then(() => {
+                            window.location.reload();
+                          });
+                        }}
+                      >
+                        Sign Out
+                      </button>
+                    </>
                   )}
                 </div>
               ) : (
@@ -130,7 +151,7 @@ export default function NavBar({ user }: { user: User | null }) {
           </div>
         </div>
         {user ? (
-          <div className="hidden md:flex gap-2">
+          <div className="hidden md:flex  gap-8  items-center relative">
             <Link
               className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
               style={{
@@ -140,7 +161,64 @@ export default function NavBar({ user }: { user: User | null }) {
             >
               Registered Events
             </Link>
-            {showSignOut && (
+            <button
+              className="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              type="button"
+            >
+              <Image
+                src={user?.user_metadata.avatar_url}
+                alt="avatar"
+                width={50}
+                height={50}
+                className="rounded-full hover:shadow-2xl cursor-pointer"
+                onClick={() => {
+                  setDropdown(!dropdown);
+                }}
+              />
+            </button>
+            {dropdown && (
+              <div
+                className="z-50 absolute top-16 right-0 bg-white divide-y divide-gray-100 rounded-xl shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                style={{
+                  fontFamily: "Unbounded, cursive",
+                }}
+              >
+                <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                  <div>{user?.user_metadata.full_name}</div>
+                  <div className="font-medium truncate">{user?.email}</div>
+                </div>
+                <ul
+                  className="py-2 text-sm text-black dark:text-gray-200"
+                  aria-labelledby="dropdownUserAvatarButton"
+                >
+                  <li>
+                    <Link
+                      href="/profile"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Edit Profile
+                    </Link>
+                  </li>
+                </ul>
+                <div className="hover:bg-red-600 rounded-br-xl rounded-bl-xl">
+                  <button
+                    className="block px-4 py-2 text-sm text-black "
+                    style={{
+                      fontFamily: "Unbounded, cursive",
+                    }}
+                    onClick={() => {
+                      signOut().then(() => {
+                        window.location.reload();
+                      });
+                    }}
+                  >
+                    Sign out
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* {showSignOut && (
               <button
                 className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-red-800 hover:text-white transition duration-300 ease-in-out"
                 style={{
@@ -155,7 +233,7 @@ export default function NavBar({ user }: { user: User | null }) {
               >
                 Sign Out
               </button>
-            )}
+            )} */}
           </div>
         ) : (
           <button
