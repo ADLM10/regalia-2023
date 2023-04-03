@@ -11,6 +11,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import Sponsors from "@/components/Sponsors";
+import { ParticipatedEvents } from "@/types/ParticipatedEvents";
 
 const EventRegistrationModal = dynamic(
   () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
@@ -50,7 +51,9 @@ export default function Home({
 
   // TODO: Add types
   const [registeredEvents, setRegisteredEvents] = useState<any[]>([]);
-  const [participatedEvents, setParticipatedEvents] = useState<any[]>([]);
+  const [participatedEvents, setParticipatedEvents] = useState<
+    ParticipatedEvents[]
+  >([]);
 
   return (
     <>

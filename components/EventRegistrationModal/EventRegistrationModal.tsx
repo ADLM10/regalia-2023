@@ -1,3 +1,4 @@
+import { ParticipatedEvents } from "@/types/ParticipatedEvents";
 import { Database } from "@/types/supabase";
 import { getNumberWithOrdinal } from "@/utils/dataHelper";
 import {
@@ -30,10 +31,8 @@ const EventRegistrationModal = ({
   registeredEvents: number[];
   setRegisteredEvents: any;
   registeredByEmail: string;
-  participatedEvents: Database["public"]["Tables"]["participation"]["Row"][];
-  setParticipatedEvents: (
-    participatedEvents: Database["public"]["Tables"]["participation"]["Row"][]
-  ) => void;
+  participatedEvents: ParticipatedEvents[];
+  setParticipatedEvents: (participatedEvents: ParticipatedEvents[]) => void;
 }) => {
   const [teamName, setTeamName] = useState<string>("");
   const [team, setTeam] = useState<any[]>([""]);
