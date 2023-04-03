@@ -35,8 +35,6 @@ const EventRegistrationModal = ({
     participatedEvents: Database["public"]["Tables"]["participation"]["Row"][]
   ) => void;
 }) => {
-
-
   const [teamName, setTeamName] = useState<string>("");
   const [team, setTeam] = useState<any[]>([""]);
 
@@ -122,7 +120,7 @@ const EventRegistrationModal = ({
     <>
       {open && (
         <div className="fixed top-0 left-0 w-full h-full  bg-opacity-50 backdrop-blur-sm z-50 flex justify-center items-center">
-          <div className=" w-full  min-h-[48rem] rounded-lg shadow-lg flex flex-col bg-gradient-to-br from-black to-fuchsia-950 justify-between items-center mx-5 p-5 md:w-1/2 event-modal  backdrop-blur-sm ">
+          <div className=" w-full  min-h-[48rem] max-h-[48rem] rounded-lg shadow-lg flex flex-col bg-gradient-to-br from-black to-fuchsia-950 justify-between items-center mx-5 p-5 md:w-1/2 event-modal  backdrop-blur-sm ">
             <div className="w-full flex flex-row justify-between items-center p">
               <div className="w-24 h-24 relative">
                 <Image
@@ -183,7 +181,6 @@ const EventRegistrationModal = ({
                     __html: event.rules_regulations,
                   }}
                 ></div>
-                
               </div>
             ) : (
               isRulesVisible && (
@@ -201,7 +198,7 @@ const EventRegistrationModal = ({
                     <b>Prize Pool : </b>₹ {event.prize_pool}
                   </span>
                   <div
-                    className="h-96 mt-10 w-full text-white text-left text-sm font-extralight overflow-y-scroll leading-7"
+                    className="h-96 mt-10 w-full text-white text-left text-sm font-extralight overflow-y-scroll leading-7 "
                     style={{
                       fontFamily: "Unbounded, cursive",
                     }}
@@ -210,6 +207,29 @@ const EventRegistrationModal = ({
                     }}
                   ></div>
                 </div>
+              )
+            )}
+            {event.type === "SOLO" ? (
+              <div
+                className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal leading-7  "
+                style={{
+                  fontFamily: "Unbounded, cursive",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: event.faculty_coordinator,
+                }}
+              ></div>
+            ) : (
+              isRulesVisible && (
+                <div
+                  className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal leading-7  "
+                  style={{
+                    fontFamily: "Unbounded, cursive",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: event.faculty_coordinator,
+                  }}
+                ></div>
               )
             )}
             {event.type === "SOLO" && !isRulesVisible && (
@@ -286,15 +306,7 @@ const EventRegistrationModal = ({
                 )}
               </p>
             )}
-            <div
-                className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal  leading-7"
-                style={{
-                  fontFamily: "Unbounded, cursive",
-                }}
-                dangerouslySetInnerHTML={{
-                  __html: event.faculty_coordinator,
-                }}
-                ></div>
+
             {isRulesVisible && (
               <span className="my-4">
                 <input
@@ -314,7 +326,6 @@ const EventRegistrationModal = ({
                 </label>
               </span>
             )}
-            
           </div>
         </div>
       )}
