@@ -9,9 +9,10 @@ import Card from "@/components/card";
 import { User } from "@supabase/supabase-js";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sponsors from "@/components/Sponsors";
 import { ParticipatedEvents } from "@/types/ParticipatedEvents";
+import { supabase } from "@/utils/supabaseClient";
 
 const EventRegistrationModal = dynamic(
   () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
@@ -55,6 +56,23 @@ export default function Home({
     ParticipatedEvents[]
   >([]);
 
+  function checkIfParticipatedInEvent(id: number) {
+    const tempEventId = participatedEvents.map((item) => item.event_id);
+    return tempEventId.includes(id);
+  }
+
+  useEffect(() => {
+    !isLoading &&
+      supabase
+        .rpc("search_email_in_registered_event", {
+          email: user!.email,
+        })
+        .then((val) => {
+          setParticipatedEvents(val.data);
+        });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
   return (
     <>
       <Head>
@@ -87,6 +105,8 @@ export default function Home({
                 eventData={item}
                 setEventData={setEventData}
                 setOpen={setOpen}
+                isLoggedIn={user ? true : false}
+                isParticipated={checkIfParticipatedInEvent(item.id)}
               />
             )
           )}
@@ -126,7 +146,7 @@ export async function getServerSideProps() {
 
   try {
     data = await getEvents(
-      "id,name,details,poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type, faculty_coordinator"
+      "id,name,details,poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type, faculty_coordinator ,multiple_registrations_allowed"
     );
   } catch (err) {
     console.log(err);

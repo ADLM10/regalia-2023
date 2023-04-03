@@ -210,7 +210,7 @@ const EventRegistrationModal = ({
             )}
             {event.type === "SOLO" ? (
               <div
-                className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal leading-7  "
+                className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal leading-7  mt-3"
                 style={{
                   fontFamily: "Unbounded, cursive",
                 }}
@@ -221,7 +221,7 @@ const EventRegistrationModal = ({
             ) : (
               isRulesVisible && (
                 <div
-                  className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal leading-7  "
+                  className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal leading-7  mt-3"
                   style={{
                     fontFamily: "Unbounded, cursive",
                   }}
