@@ -37,6 +37,19 @@ const EventRegistrationModal = ({
   const [teamName, setTeamName] = useState<string>("");
   const [team, setTeam] = useState<any[]>([""]);
 
+  function updateParticipatedEvents(id: number) {
+    const tempParticipatedEvents = [...participatedEvents];
+
+    tempParticipatedEvents.push({
+      event_id: id,
+      registered_by: "",
+    });
+
+    setParticipatedEvents(tempParticipatedEvents);
+  }
+
+  
+
   const renderFormFields = (size: number) => {
     return Array(size)
       .fill(0)
@@ -104,7 +117,7 @@ const EventRegistrationModal = ({
         setShowPayment(true);
         setAmount((prev: number) => prev + event!.fees!);
 
-        // updateParticipatedEvents(event!.id);
+        updateParticipatedEvents(event!.id);
       })
       .catch((err) => {
         toast.error(
@@ -243,9 +256,9 @@ const EventRegistrationModal = ({
                     toast.success("Registration Successful!");
                     setOpen(false);
                     setShowPayment(true);
-                    // setAmount((prev: number) => prev + parseInt(event.fees));
+                    setAmount((prev: number) => prev + event!.fees!);
                     setRegisteredEvents((prev: any) => [...prev, event.id]);
-                    // updateParticipatedEvents(event.id);
+                    updateParticipatedEvents(event.id);
                   });
                 }}
               >

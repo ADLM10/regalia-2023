@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import EventRegistrationModal from "./EventRegistrationModal/EventRegistrationModal";
+import EventRulesModal from "./Modals/EventRulesModal";
 
 const EventCard = ({ eventData }: any) => {
   const { name, details, poster_image, id } = eventData;
@@ -39,13 +40,13 @@ const EventCard = ({ eventData }: any) => {
           </p>
         </div>
       </div>
-      {/* <EventRegistrationModal
-        event={eventData}
+      <EventRulesModal
+        eventData={eventData}
         showModal={showModal}
         closeModal={() => {
           setShowModal(false);
         }}
-      /> */}
+      />
     </>
   );
 };

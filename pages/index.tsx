@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import Sponsors from "@/components/Sponsors";
 import { ParticipatedEvents } from "@/types/ParticipatedEvents";
 import { supabase } from "@/utils/supabaseClient";
+import { getRegisteredEvents } from "@/utils/getRegisteredEvents";
+import { useRouter } from "next/router";
 
 const EventRegistrationModal = dynamic(
   () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
@@ -47,8 +49,10 @@ export default function Home({
 
   const [open, setOpen] = useState<boolean>(false);
 
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState<number>(0);
   const [showPaymentBtn, setShowPaymentBtn] = useState(false);
+
+  console.log(amount);
 
   // TODO: Add types
   const [registeredEvents, setRegisteredEvents] = useState<any[]>([]);
@@ -56,21 +60,52 @@ export default function Home({
     ParticipatedEvents[]
   >([]);
 
+  const router = useRouter();
+
   function checkIfParticipatedInEvent(id: number) {
     const tempEventId = participatedEvents.map((item) => item.event_id);
     return tempEventId.includes(id);
   }
 
   useEffect(() => {
-    !isLoading &&
-      supabase
-        .rpc("search_email_in_registered_event", {
-          email: user!.email,
-        })
-        .then((val) => {
-          setParticipatedEvents(val.data);
-        });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    !isLoading && user && user.email &&
+      Promise.all([
+        supabase
+          .rpc("search_email_in_registered_event", {
+            email: user.email,
+          })
+          .then((val) => {
+            setParticipatedEvents(val.data);
+          }),
+        getRegisteredEvents({
+          select: `events(id, fees),registration_cancelled,transaction_id`,
+          email: user!.email!,
+        }).then((data) => {
+          let amount = 0;
+          if (data) {
+            const temp = data.map(
+              (item: Database["public"]["Tables"]["participation"]["Row"]) =>
+                item.events!.id
+            );
+            data.forEach(
+              (item: Database["public"]["Tables"]["participation"]["Row"]) => {
+                if (
+                  !item.registration_cancelled &&
+                  item.transaction_id === null
+                )
+                  amount += item.events!.fees!;
+              }
+            );
+            if (amount > 0) {
+              setShowPaymentBtn(true);
+            }
+            setAmount(amount);
+            setRegisteredEvents(temp);
+          }
+        }),
+      ]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   return (
@@ -81,7 +116,23 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
+      {showPaymentBtn && (
+            <button
+              onClick={() => {
+                router.push({
+                  pathname: "/registered-events",
+                });
+              }}
+              className="bg-white fixed right-10 bottom-20 w-32 h-10 z-20 rounded-2xl hover:bg-[blueviolet] hover:text-white transition duration-300 ease-in-out "
+              style={{
+                fontFamily: "Unbounded,cursive",
+              }}
+            >
+              Pay ₹ {amount}
+            </button>
+          )}
         <Hero isLoggedIn={user ? true : false} />
         <div className="flex flex-col justify-start items-left mb-20">
           <h1 className="text-5xl text-left font-normal text-white px-10 pt-10">
@@ -94,7 +145,7 @@ export default function Home({
             Participate and emerge victorious in these eyegrabbing events.
           </span>
         </div>
-        <div className="event-card">
+        <div className="event-card relative">
           {events.map(
             (
               item: Database["public"]["Tables"]["events"]["Row"],
@@ -110,6 +161,7 @@ export default function Home({
               />
             )
           )}
+          
         </div>
         <Sponsors />
         <ContactUs />

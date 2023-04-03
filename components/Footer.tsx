@@ -25,7 +25,7 @@ const Footer = () => {
             href="https://www.facebook.com/regalia.rccfests"
             target="_blank"
             rel="noreferrer"
-            className="mr-4 neon md:mr-6"
+            className="mr-4 neon md:mr-6 hover:color-[blueviolet]"
           >
             Facebook
           </a>
@@ -33,7 +33,7 @@ const Footer = () => {
         <li>
           <a
             href="https://www.instagram.com/regalia_rcciit/"
-            className="mr-4 neon md:mr-6"
+            className="mr-4 neon md:mr-6 hover:color-[blueviolet]"
             target="_blank"
             rel="noreferrer"
           >
@@ -41,7 +41,7 @@ const Footer = () => {
           </a>
         </li>
         <li>
-          <Link href="/#contact" className="neon">
+          <Link href="/#contact" className="hover:color-[blueviolet]">
             Contact
           </Link>
         </li>

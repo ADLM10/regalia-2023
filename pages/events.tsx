@@ -3,6 +3,7 @@ import { Database } from "@/types/supabase";
 import { getEvents } from "@/utils/getEvents";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 
 import localData from "../public/data.json";
 
@@ -11,6 +12,9 @@ export default function Events({
 }: {
   events: Database["public"]["Tables"]["events"]["Row"][];
 }): JSX.Element {
+
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <Head>

@@ -72,19 +72,46 @@ export default function NavBar({ user }: { user: User | null }) {
               <li className="text-white hover:text-blue-600">
                 <Link href="/#contact">Contact Us</Link>
               </li>
+              {user ? (
+                <div className="block md:hidden my-3 w-48">
+                  <Link
+                    className="block md:hidden bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+                    style={{
+                      fontFamily: "Unbounded, cursive",
+                    }}
+                    href="/registered-events"
+                  >
+                    Registered Events
+                  </Link>
+                </div>
+              ) : (
+                <button
+                  className="block md:hidden mt-3  bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+                  style={{
+                    fontFamily: "Unbounded, cursive",
+                  }}
+                  onClick={async () => {
+                    await login();
+                  }}
+                >
+                  Register
+                </button>
+              )}
             </ul>
           </div>
         </div>
         {user ? (
-          <Link
-            className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
-            style={{
-              fontFamily: "Unbounded, cursive",
-            }}
-            href="/registered-events"
-          >
-            Registered Events
-          </Link>
+          <div className="hidden md:block ">
+            <Link
+              className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+              style={{
+                fontFamily: "Unbounded, cursive",
+              }}
+              href="/registered-events"
+            >
+              Registered Events
+            </Link>
+          </div>
         ) : (
           <button
             className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
