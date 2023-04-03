@@ -35,7 +35,6 @@ const PaymentModal = ({
   ) => void;
   setChecked: (checked: boolean[]) => void;
 }) => {
-  console.log(registeredEvents, amount, email);
   const [transactionID, setTransactionID] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [upiID, setUpiID] = useState("");

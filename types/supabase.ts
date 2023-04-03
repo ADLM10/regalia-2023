@@ -18,7 +18,6 @@ export interface Database {
           id: number;
           is_open: boolean;
           min_members: number;
-          min_team_size: number;
           multiple_registrations_allowed: boolean;
           name: string;
           poster_image: string | null;
@@ -35,7 +34,6 @@ export interface Database {
           id?: number;
           is_open: boolean;
           min_members?: number;
-          min_team_size?: number;
           multiple_registrations_allowed: boolean;
           name: string;
           poster_image?: string | null;
@@ -52,7 +50,6 @@ export interface Database {
           id?: number;
           is_open?: boolean;
           min_members?: number;
-          min_team_size?: number;
           multiple_registrations_allowed?: boolean;
           name?: string;
           poster_image?: string | null;

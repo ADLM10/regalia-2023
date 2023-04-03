@@ -1,8 +1,12 @@
 import { Database } from "@/types/supabase";
 import { getNumberWithOrdinal } from "@/utils/dataHelper";
-import { newSoloRegistration } from "@/utils/newRegistration";
+import {
+  newSoloRegistration,
+  newTeamRegistration,
+} from "@/utils/newRegistration";
 import Image from "next/image";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const EventRegistrationModal = ({
   open,
@@ -31,6 +35,9 @@ const EventRegistrationModal = ({
     participatedEvents: Database["public"]["Tables"]["participation"]["Row"][]
   ) => void;
 }) => {
+  const [teamName, setTeamName] = useState<string>("");
+  const [team, setTeam] = useState<any[]>([""]);
+
   const renderFormFields = (size: number) => {
     return Array(size)
       .fill(0)
@@ -70,8 +77,44 @@ const EventRegistrationModal = ({
   const [isRulesVisible, setIsRulesVisible] = React.useState(true);
   // To check if the rules are visible or not
 
-  const [teamName, setTeamName] = useState<string>("");
-  const [team, setTeam] = useState<any[]>([""]);
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const emails = new Set();
+
+    team.forEach((email) => {
+      emails.add(email);
+    });
+
+    if (emails.size !== team.length) {
+      toast.error("Duplicate emails are not allowed!");
+      return;
+    }
+
+    team[0] = registeredByEmail;
+
+    newTeamRegistration({
+      team_name: teamName,
+      team_members: team,
+      event_id: event!.id,
+      email: registeredByEmail,
+    })
+      .then(() => {
+        setRegisteredEvents((prev: any) => [...prev, event!.id]);
+        toast.success("Registration Successful!");
+        setOpen(false);
+        setShowPayment(true);
+        setAmount((prev: number) => prev + event!.fees!);
+
+        // updateParticipatedEvents(event!.id);
+      })
+      .catch((err) => {
+        toast.error(
+          err.code === "23503"
+            ? "Some/All emails are not registered on the platform!"
+            : "Error! Try Again!"
+        );
+      });
+  };
 
   return (
     <>
@@ -175,7 +218,7 @@ const EventRegistrationModal = ({
                     event_id: event.id,
                     email: registeredByEmail,
                   }).then(() => {
-                    // toast.success("Registration Successful!");
+                    toast.success("Registration Successful!");
                     setOpen(false);
                     setShowPayment(true);
                     // setAmount((prev: number) => prev + parseInt(event.fees));
@@ -196,10 +239,7 @@ const EventRegistrationModal = ({
             {!isRulesVisible && (
               <p className="mt-2 overflow-y-scroll w-full">
                 {event.type === "TEAM" && (
-                  <form
-                    className="w-full"
-                    // onSubmit={handleSubmit}
-                  >
+                  <form className="w-full" onSubmit={handleSubmit}>
                     <div className="sm:col-span-3 mt-4">
                       <label
                         htmlFor="Team Name"
@@ -265,6 +305,7 @@ const EventRegistrationModal = ({
           </div>
         </div>
       )}
+      <ToastContainer />
     </>
   );
 };
