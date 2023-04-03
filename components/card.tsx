@@ -1,7 +1,15 @@
 import { Database } from "@/types/supabase";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState } from "react";
-import EventRegistrationModal from "./EventRegistrationModal/EventRegistrationModal";
+
+const EventRegistrationModal = dynamic(
+  () => import("./EventRegistrationModal/EventRegistrationModal"),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
 
 const Card = ({
   eventData,
