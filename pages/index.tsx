@@ -1,13 +1,12 @@
 import Head from "next/head";
 import Hero from "./../components/hero";
 import data from "../public/data.json";
-import NavBar from "@/components/navbar";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import { getEvents } from "@/utils/getEvents";
 import { Database } from "@/types/supabase";
 import Card from "@/components/card";
-import { User, UserResponse } from "@supabase/supabase-js";
+import { User } from "@supabase/supabase-js";
 
 export default function Home({
   events,
@@ -15,7 +14,7 @@ export default function Home({
   isLoading,
 }: {
   events: Database["public"]["Tables"]["events"]["Row"][];
-  user: User | null | UserResponse;
+  user: User | null;
   isLoading: boolean;
 }): JSX.Element {
   return (
@@ -26,8 +25,8 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
-        <Hero />
+      <body className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
+        <Hero isLoggedIn={user ? true : false} />
         <div className="event-card">
           {events.map(
             (
@@ -40,7 +39,7 @@ export default function Home({
         </div>
         <ContactUs />
         <Footer />
-      </main>
+      </body>
     </>
   );
 }

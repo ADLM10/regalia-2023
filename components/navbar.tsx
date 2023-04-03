@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { User } from "@supabase/supabase-js";
@@ -76,14 +76,15 @@ export default function NavBar({ user }: { user: User | null }) {
           </div>
         </div>
         {user ? (
-          <button
+          <Link
             className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
             style={{
               fontFamily: "Unbounded, cursive",
             }}
+            href="/registered-events"
           >
-            Dashboard
-          </button>
+            Registered Events
+          </Link>
         ) : (
           <button
             className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"

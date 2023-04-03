@@ -16,7 +16,6 @@ const GetUser = () => {
     });
 
     supabase.auth.onAuthStateChange((_event, session) => {
-      console.log(session);
       if (session?.user?.id) {
         setUserObject(session.user);
       }
