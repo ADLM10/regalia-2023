@@ -39,13 +39,13 @@ const EventCard = ({ eventData }: any) => {
           </p>
         </div>
       </div>
-      <EventRegistrationModal
-        eventData={eventData}
+      {/* <EventRegistrationModal
+        event={eventData}
         showModal={showModal}
         closeModal={() => {
           setShowModal(false);
         }}
-      />
+      /> */}
     </>
   );
 };
