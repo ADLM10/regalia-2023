@@ -1,4 +1,3 @@
-import { Modal } from "flowbite";
 import Image from "next/image";
 
 const EventDataModal = ({

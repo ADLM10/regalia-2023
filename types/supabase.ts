@@ -64,7 +64,7 @@ export interface Database {
           event_id: number;
           id: string;
           phone_number: string | null;
-          registered_by: string | null;
+          registered_by: string;
           registration_cancelled: boolean | null;
           team_member_0: string | null;
           team_member_1: string | null;
@@ -87,6 +87,13 @@ export interface Database {
           transaction_screenshot_file_name: string | null;
           transaction_verified: boolean | null;
           upi_id: string | null;
+          /* join with events table through event id */
+          events?: {
+            id: number;
+            name: string;
+            poster_image: string;
+            fees: number;
+          };
         };
         Insert: {
           event_id: number;

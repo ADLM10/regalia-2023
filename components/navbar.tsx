@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { User } from "@supabase/supabase-js";
@@ -82,7 +82,7 @@ export default function NavBar({ user }: { user: User | null }) {
               fontFamily: "Unbounded, cursive",
             }}
           >
-            Dashboard
+            Registered Events
           </button>
         ) : (
           <button

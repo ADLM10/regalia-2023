@@ -1,14 +1,6 @@
-import Image from "next/image";
-import BandBash from "./../public/images/regalia-bandbash.jpg";
-import Pass from "./../components/pass";
-import Card from "./../components/card";
-import ContactUs from "./ContactUs";
+import Link from "next/link";
 
-import Tabs from "./../components/Tabs";
-
-import Footer from "./Footer";
-
-const hero = () => {
+const hero = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   return (
     <>
       <div className="landing-page pb-10">
@@ -16,10 +8,8 @@ const hero = () => {
           <div
             className="hero-text "
             style={{
-              // backgroundImage: `url("./images/regalia.jpg")`,
               backgroundColor: "white",
               backgroundSize: "contain",
-              // backgroundPosition: "top",
               backgroundClip: "text",
             }}
           >
@@ -61,52 +51,15 @@ const hero = () => {
               </g>
             </svg>
           </div>
-          <button className="primary-button mb-10">Register Now</button>
+          {isLoggedIn ? (
+            <Link href="/registered-events" className="primary-button mb-10">
+              Registered Events
+            </Link>
+          ) : (
+            <button className="primary-button mb-10">Register Now</button>
+          )}
         </div>
       </div>
-      {/* <div className="content">
-          <p className="content-box1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="5"
-              height="5"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fill="white"
-                d="m7 6l1-2H6C3.79 4 2 6.79 2 9v7h7V9H5c0-3 2-3 2-3zm7 3c0-3 2-3 2-3l1-2h-2c-2.21 0-4 2.79-4 5v7h7V9z"
-              />
-            </svg>
-            Regalia 2023 is the annual cultural fest of RCCIIT, which is a
-            highly anticipated event among the college students and faculties.
-            The fest is scheduled to be held in the month of April.The
-            organizing committee of Regalia 2023 has put in months of effort and
-            planning to ensure that the fest is a grand success and provides a
-            memorable experience for all participants. Regalia 2023 promises to
-            be a celebration of art, culture, creativity, and talent.
-          </p>
-          <Image
-            className="image"
-            // Absolute URL
-            src={BandBash}
-            alt="User profile picture"
-            width={1500}
-          />
-          <p className="content-box2">
-            The theme of Regalia 2023 is Rhyme . Rhythm . Reverb and the fest
-            promises to be an exciting and colorful extravaganza of music,
-            dance, drama, fashion show and more . There will be a wide range of
-            events and activities, including a fashion show, a group dance
-            competition, a battle of bands, an instrumental competition and
-            more.The fest will also feature performances by renowned artists and
-            celebrities.
-          </p>
-        </div>
-        <Pass />
-        <header className="p-8">Events</header>
-      </div>} */}
-
-      {/* <Tabs /> */}
     </>
   );
 };
