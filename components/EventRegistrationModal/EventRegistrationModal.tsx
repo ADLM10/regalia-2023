@@ -35,6 +35,8 @@ const EventRegistrationModal = ({
     participatedEvents: Database["public"]["Tables"]["participation"]["Row"][]
   ) => void;
 }) => {
+
+
   const [teamName, setTeamName] = useState<string>("");
   const [team, setTeam] = useState<any[]>([""]);
 
@@ -120,7 +122,7 @@ const EventRegistrationModal = ({
     <>
       {open && (
         <div className="fixed top-0 left-0 w-full h-full  bg-opacity-50 backdrop-blur-sm z-50 flex justify-center items-center">
-          <div className=" w-full  max-h-[40rem] rounded-lg shadow-lg flex flex-col bg-gradient-to-br from-black to-fuchsia-950 justify-evenly items-center mx-5 p-5 md:w-1/2 event-modal  backdrop-blur-sm ">
+          <div className=" w-full  min-h-[48rem] rounded-lg shadow-lg flex flex-col bg-gradient-to-br from-black to-fuchsia-950 justify-between items-center mx-5 p-5 md:w-1/2 event-modal  backdrop-blur-sm ">
             <div className="w-full flex flex-row justify-between items-center p">
               <div className="w-24 h-24 relative">
                 <Image
@@ -173,7 +175,7 @@ const EventRegistrationModal = ({
                   <b>Prize Pool : </b>₹ {event.prize_pool}
                 </span>
                 <div
-                  className="h-96 mt-10 w-full text-white text-left text-sm font-extralight overflow-y-scroll leading-7"
+                  className="h-96 mt-10 w-full text-white text-left text-sm font-extralight overflow-y-scroll leading-7 "
                   style={{
                     fontFamily: "Unbounded, cursive",
                   }}
@@ -181,6 +183,7 @@ const EventRegistrationModal = ({
                     __html: event.rules_regulations,
                   }}
                 ></div>
+                
               </div>
             ) : (
               isRulesVisible && (
@@ -254,7 +257,7 @@ const EventRegistrationModal = ({
                           required={true}
                           id="TeamName"
                           autoComplete="off"
-                          className="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full font-sans"
+                          className="block pl-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full font-sans"
                           placeholder="Team Name"
                           onChange={(e) => setTeamName(e.target.value)}
                         />
@@ -283,8 +286,17 @@ const EventRegistrationModal = ({
                 )}
               </p>
             )}
+            <div
+                className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal  leading-7"
+                style={{
+                  fontFamily: "Unbounded, cursive",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: event.faculty_coordinator,
+                }}
+                ></div>
             {isRulesVisible && (
-              <span className="mt-4">
+              <span className="my-4">
                 <input
                   type="checkbox"
                   name="rules"
@@ -302,6 +314,7 @@ const EventRegistrationModal = ({
                 </label>
               </span>
             )}
+            
           </div>
         </div>
       )}

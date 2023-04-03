@@ -123,7 +123,7 @@ export async function getServerSideProps() {
 
   try {
     data = await getEvents(
-      "id,name,details,poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type"
+      "id,name,details,poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type, faculty_coordinator"
     );
   } catch (err) {
     console.log(err);
