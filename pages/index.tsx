@@ -7,6 +7,7 @@ import { getEvents } from "@/utils/getEvents";
 import { Database } from "@/types/supabase";
 import Card from "@/components/card";
 import { User } from "@supabase/supabase-js";
+import Sponsors from "@/components/Sponsors";
 
 export default function Home({
   events,
@@ -25,8 +26,9 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
+      <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
         <Hero isLoggedIn={user ? true : false} />
+        <Sponsors />
         <div className="event-card">
           {events.map(
             (
@@ -39,7 +41,7 @@ export default function Home({
         </div>
         <ContactUs />
         <Footer />
-      </body>
+      </main>
     </>
   );
 }
