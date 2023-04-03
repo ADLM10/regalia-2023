@@ -1,6 +1,6 @@
 import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
 import { Database } from "@/types/supabase";
-import { getEvents } from "@/utils/getEvents";
+import { cancelRegistration } from "@/utils/cancelRegistration";
 import { getRegisteredEvents } from "@/utils/getRegisteredEvents";
 import { searchEmailInParticipation } from "@/utils/searchEmailInParticipation";
 import { User } from "@supabase/supabase-js";
@@ -11,11 +11,9 @@ import { useEffect, useState } from "react";
 import localData from "../public/data.json";
 
 export default function RegisteredEvents({
-  events,
   user,
   isLoading,
 }: {
-  events: Database["public"]["Tables"]["events"]["Row"][];
   user: User | null;
   isLoading: boolean;
 }): JSX.Element {
@@ -227,18 +225,18 @@ export default function RegisteredEvents({
                         <button
                           className="bg-red-700 text-white rounded py-2 px-4 hover:bg-red-800 action:bg-red-800"
                           onClick={() => {
-                            // cancelRegistration({
-                            //   participation_id: registrationData.id,
-                            // }).then(() => {
-                            //   const newData = data;
-                            //   newData[index].registration_cancelled = true;
-                            //   setData([...newData]);
-                            //   if (checked[index]) {
-                            //     setAmount(
-                            //       amount - registrationData!.events!.fees
-                            //     );
-                            //   }
-                            // });
+                            cancelRegistration({
+                              participation_id: registrationData.id,
+                            }).then(() => {
+                              const newData = data;
+                              newData[index].registration_cancelled = true;
+                              setData([...newData]);
+                              if (checked[index]) {
+                                setAmount(
+                                  amount - registrationData!.events!.fees
+                                );
+                              }
+                            });
                           }}
                         >
                           Cancel Registration!
@@ -251,15 +249,15 @@ export default function RegisteredEvents({
                         </span>
                         <button
                           onClick={() => {
-                            // cancelRegistration({
-                            //   participation_id: registrationData.id,
-                            //   cancel: false,
-                            // }).then(() => {
-                            //   handleCancelRegistration(
-                            //     index,
-                            //     registrationData!.events!.fees
-                            //   );
-                            // });
+                            cancelRegistration({
+                              participation_id: registrationData.id,
+                              cancel: false,
+                            }).then(() => {
+                              handleCancelRegistration(
+                                index,
+                                registrationData!.events!.fees
+                              );
+                            });
                           }}
                           className="bg-green-700 text-white rounded py-2 px-4 hover:bg-green-800 action:bg-green-800"
                         >
@@ -293,10 +291,11 @@ export default function RegisteredEvents({
         {amount !== 0 && (
           <span className="flex flex-row justify-center rounded mt-2 mb-4">
             <button
+              className="text-white bg-green-700 py-2 px-4 rounded hover:bg-green-800 action:bg-green-800"
               onClick={() => {
                 showPaymentModalHandler();
               }}
-            >{`Pay ₹${amount}!`}</button>
+            >{`Pay Rs.${amount}!`}</button>
           </span>
         )}
         <section className="pb-10">
@@ -407,20 +406,4 @@ export default function RegisteredEvents({
       /> */}
     </>
   );
-}
-
-export async function getServerSideProps() {
-  let data;
-
-  try {
-    data = await getEvents("*");
-  } catch (err) {
-    console.log(err);
-  }
-
-  return {
-    props: {
-      events: data,
-    },
-  };
 }
