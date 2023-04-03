@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { User } from "@supabase/supabase-js";
 import { login } from "@/utils/login";
+import { signOut } from "@/utils/signout";
+import { useRouter } from "next/router";
 
 export default function NavBar({ user }: { user: User | null }) {
   const [navbar, setNavbar] = useState(false);
+
+  const [showSignOut, setShowSignOut] = useState(false);
+
+  useEffect(() => {
+    if (user === null) {
+      setShowSignOut(false);
+    }
+    else {
+      setShowSignOut(true);
+    }
+  }, [user]);
 
   return (
     <nav className="w-full bg-transparent shadow fixed z-20 bg-gradient-to-tr from-black to-fuchsia-950">
@@ -51,7 +64,7 @@ export default function NavBar({ user }: { user: User | null }) {
             }`}
           >
             <ul
-              className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0"
+              className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 py-3"
               style={{
                 fontFamily: "Unbounded, cursive",
               }}
@@ -73,7 +86,7 @@ export default function NavBar({ user }: { user: User | null }) {
                 <Link href="/#contact">Contact Us</Link>
               </li>
               {user ? (
-                <div className="block md:hidden my-3 w-48">
+                <div className="flex flex-col md:hidden my-3 w-full items-center gap-3">
                   <Link
                     className="block md:hidden bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
                     style={{
@@ -83,6 +96,22 @@ export default function NavBar({ user }: { user: User | null }) {
                   >
                     Registered Events
                   </Link>
+                  {showSignOut && (
+                    <button
+                      className="block md:hidden text-center bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-red-800 hover:text-white transition duration-300 ease-in-out"
+                      style={{
+                        fontFamily: "Unbounded, cursive",
+                      }}
+                      onClick={() => {
+                        signOut()
+                        .then(() => {
+                          window.location.reload();
+                        })
+                      }}
+                    >
+                      Sign Out
+                    </button>
+                  )}
                 </div>
               ) : (
                 <button
@@ -101,7 +130,7 @@ export default function NavBar({ user }: { user: User | null }) {
           </div>
         </div>
         {user ? (
-          <div className="hidden md:block ">
+          <div className="hidden md:flex gap-2">
             <Link
               className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
               style={{
@@ -111,6 +140,22 @@ export default function NavBar({ user }: { user: User | null }) {
             >
               Registered Events
             </Link>
+            {showSignOut && (
+              <button
+                className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-red-800 hover:text-white transition duration-300 ease-in-out"
+                style={{
+                  fontFamily: "Unbounded, cursive",
+                }}
+                onClick={() => {
+                  signOut()
+                  .then(() => {
+                    window.location.reload();
+                  })
+                }}
+              >
+                Sign Out
+              </button>
+            )}
           </div>
         ) : (
           <button

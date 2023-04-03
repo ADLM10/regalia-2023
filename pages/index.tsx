@@ -15,6 +15,7 @@ import { ParticipatedEvents } from "@/types/ParticipatedEvents";
 import { supabase } from "@/utils/supabaseClient";
 import { getRegisteredEvents } from "@/utils/getRegisteredEvents";
 import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 
 const EventRegistrationModal = dynamic(
   () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
@@ -52,8 +53,6 @@ export default function Home({
   const [amount, setAmount] = useState<number>(0);
   const [showPaymentBtn, setShowPaymentBtn] = useState(false);
 
-  console.log(amount);
-
   // TODO: Add types
   const [registeredEvents, setRegisteredEvents] = useState<any[]>([]);
   const [participatedEvents, setParticipatedEvents] = useState<
@@ -68,7 +67,9 @@ export default function Home({
   }
 
   useEffect(() => {
-    !isLoading && user && user.email &&
+    !isLoading &&
+      user &&
+      user.email &&
       Promise.all([
         supabase
           .rpc("search_email_in_registered_event", {
@@ -108,6 +109,8 @@ export default function Home({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
+  
+
   return (
     <>
       <Head>
@@ -116,23 +119,23 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
-      {showPaymentBtn && (
-            <button
-              onClick={() => {
-                router.push({
-                  pathname: "/registered-events",
-                });
-              }}
-              className="bg-white fixed right-10 bottom-20 w-32 h-10 z-20 rounded-2xl hover:bg-[blueviolet] hover:text-white transition duration-300 ease-in-out "
-              style={{
-                fontFamily: "Unbounded,cursive",
-              }}
-            >
-              Pay ₹ {amount}
-            </button>
-          )}
+        {showPaymentBtn && (
+          <button
+            onClick={() => {
+              router.push({
+                pathname: "/registered-events",
+              });
+            }}
+            className="bg-white fixed right-10 bottom-20 w-32 h-10 z-20 rounded-2xl hover:bg-[blueviolet] hover:text-white transition duration-300 ease-in-out "
+            style={{
+              fontFamily: "Unbounded,cursive",
+            }}
+          >
+            Pay ₹ {amount}
+          </button>
+        )}
         <Hero isLoggedIn={user ? true : false} />
         <div className="flex flex-col justify-start items-left mb-20">
           <h1 className="text-5xl text-left font-normal text-white px-10 pt-10">
@@ -161,7 +164,6 @@ export default function Home({
               />
             )
           )}
-          
         </div>
         <Sponsors />
         <ContactUs />
