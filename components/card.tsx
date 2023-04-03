@@ -14,17 +14,22 @@ const Card = ({
 
   return (
     <>
-    <div className="card z-10">
-      <Image src={poster_image ?? ""} alt="" width={200} height={200} />
-      <div>
-        <h2 className="text-3xl font-bold">{name}</h2>
-        <p>{details}</p>
-        <button className="hover:bg-[blueviolet]" onClick={() => {
-          setShowModal(true);
-        }}>Register Now</button>
+      <div className="card z-10">
+        <Image src={poster_image ?? ""} alt="" width={200} height={200} />
+        <div>
+          <h2 className="text-3xl font-bold">{name}</h2>
+          <p>{details}</p>
+          <button
+            className="hover:bg-[blueviolet]"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            Register Now
+          </button>
+        </div>
       </div>
-    </div>
-    <EventRegistrationModal
+      <EventRegistrationModal
         eventData={eventData}
         showModal={showModal}
         closeModal={() => {
