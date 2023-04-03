@@ -112,7 +112,7 @@ export default function Home({
         participatedEvents={participatedEvents}
         setParticipatedEvents={setParticipatedEvents}
         setRegisteredEvents={setRegisteredEvents}
-        registeredByEmail={user !== undefined ? user?.email : ""}
+        registeredByEmail={user?.email ?? ""}
       />
     </>
   );

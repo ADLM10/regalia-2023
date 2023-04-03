@@ -1,7 +1,8 @@
 import { Database } from "@/types/supabase";
 import { getNumberWithOrdinal } from "@/utils/dataHelper";
+import { newSoloRegistration } from "@/utils/newRegistration";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const EventRegistrationModal = ({
   open,
@@ -24,7 +25,7 @@ const EventRegistrationModal = ({
    * Modified after new registration */
   registeredEvents: number[];
   setRegisteredEvents: any;
-  registeredByEmail: string | undefined;
+  registeredByEmail: string;
   participatedEvents: Database["public"]["Tables"]["participation"]["Row"][];
   setParticipatedEvents: (
     participatedEvents: Database["public"]["Tables"]["participation"]["Row"][]
@@ -48,17 +49,17 @@ const EventRegistrationModal = ({
                 name="email"
                 type="email"
                 readOnly={index === 0}
-                //   defaultValue={
-                //     registeredByEmail && index === 0 ? registeredByEmail : ""
-                //   }
+                defaultValue={
+                  registeredByEmail && index === 0 ? registeredByEmail : ""
+                }
                 className="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 font-sans"
                 placeholder="Email address"
                 required={index <= event.min_members - 1}
-                //   onChange={(e) => {
-                //     const newTeam = [...team];
-                //     newTeam[index] = e.target.value;
-                //     setTeam(newTeam);
-                //   }}
+                onChange={(e) => {
+                  const newTeam = [...team];
+                  newTeam[index] = e.target.value;
+                  setTeam(newTeam);
+                }}
               />
             </div>
           </div>
@@ -68,6 +69,9 @@ const EventRegistrationModal = ({
 
   const [isRulesVisible, setIsRulesVisible] = React.useState(true);
   // To check if the rules are visible or not
+
+  const [teamName, setTeamName] = useState<string>("");
+  const [team, setTeam] = useState<any[]>([""]);
 
   return (
     <>
@@ -167,22 +171,17 @@ const EventRegistrationModal = ({
                 type="submit"
                 className="mt-4 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-3 sm:text-sm"
                 onClick={() => {
-                  //   newSoloRegistration({
-                  //     event_id: event.id,
-                  //   }).then(() => {
-                  //     toast.success("Registration Successful!");
-                  //     setOpen(false);
-                  //     setShowPayment(true);
-                  //     setAmount(
-                  //       (prev: number) =>
-                  //         prev + parseInt(event.fees)
-                  //     );
-                  //     setRegisteredEvents((prev: any) => [
-                  //       ...prev,
-                  //       event.id,
-                  //     ]);
-                  //     updateParticipatedEvents(event.id);
-                  //   });
+                  newSoloRegistration({
+                    event_id: event.id,
+                    email: registeredByEmail,
+                  }).then(() => {
+                    // toast.success("Registration Successful!");
+                    setOpen(false);
+                    setShowPayment(true);
+                    // setAmount((prev: number) => prev + parseInt(event.fees));
+                    setRegisteredEvents((prev: any) => [...prev, event.id]);
+                    // updateParticipatedEvents(event.id);
+                  });
                 }}
               >
                 Register Now!
@@ -217,9 +216,7 @@ const EventRegistrationModal = ({
                           autoComplete="off"
                           className="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full font-sans"
                           placeholder="Team Name"
-                          //   onChange={(e) =>
-                          //     setTeamName(e.target.value)
-                          //   }
+                          onChange={(e) => setTeamName(e.target.value)}
                         />
                       </div>
                     </div>
