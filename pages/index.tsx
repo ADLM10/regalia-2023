@@ -7,6 +7,7 @@ import { getEvents } from "@/utils/getEvents";
 import { Database } from "@/types/supabase";
 import Card from "@/components/card";
 import { User } from "@supabase/supabase-js";
+import Image from "next/image";
 import Sponsors from "@/components/Sponsors";
 
 export default function Home({
@@ -28,19 +29,40 @@ export default function Home({
       </Head>
       <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
         <Hero isLoggedIn={user ? true : false} />
-        <Sponsors />
+        <div className="flex flex-col justify-start items-left mb-20">
+          <h1 className="text-5xl text-left font-normal text-white px-10 pt-10">
+            Events.
+          </h1>
+          <span
+            className="text-2xl text-left font-thin text-white px-10 "
+            style={{ fontFamily: "Unbounded,cursive" }}
+          >
+            Participate and emerge victorious in these eyegrabbing events.
+          </span>
+        </div>
         <div className="event-card">
           {events.map(
             (
               item: Database["public"]["Tables"]["events"]["Row"],
               index: number
-            ) => (
-              <Card key={`events__${index}`} eventData={item} />
-            )
-          )}
+              ) => (
+                <Card key={`events__${index}`} eventData={item} />
+                )
+                )}
         </div>
+        <Sponsors />
         <ContactUs />
         <Footer />
+        <Image
+          src="https://i.imgur.com/G42sxIN.png"
+          alt="Background"
+          width={700}
+          height={700}
+          className="fixed md:top-40 md:right-5 opacity-10 top-24 -right-16"
+          style={{
+            zIndex: 0,
+          }}
+        />
       </main>
     </>
   );
@@ -50,7 +72,9 @@ export async function getServerSideProps() {
   let data;
 
   try {
-    data = await getEvents("name, details, poster_image,rules_regulations");
+    data = await getEvents(
+      "name, details, poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type"
+    );
   } catch (err) {
     console.log(err);
   }

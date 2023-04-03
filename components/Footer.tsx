@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="mt-6 w-full flex-wrap justify-between items-center bg-black rounded-tr-3xl rounded-tl-3xl p-6 shadow md:flex md:items-center md:justify-between md:px-12 text-white">
+    <footer className="z-10 flex relative mt-6 w-full flex-wrap justify-between items-center bg-black rounded-tr-3xl rounded-tl-3xl p-6 shadow md:flex md:items-center md:justify-between md:px-12 text-white">
       <span className="text-min-sm text-accent sm:text-center md:text-max-sm text-violet-600 font-normal">
         © 2023
         <a href="#" className="neon">

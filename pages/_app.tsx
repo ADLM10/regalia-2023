@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import "@/styles/globals.css";
 import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
 import GetUser from "@/hooks/getUser";
+import "react-toastify/dist/ReactToastify.css";
 import NavBar from "@/components/navbar";
 
 const myFont = localFont({ src: "../public/fonts/Gismo-Trial-Round.woff2" });

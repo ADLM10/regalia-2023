@@ -17,7 +17,6 @@ const Sponsors = () => {
       .then((data) => {
         const sponsorDataArr =
           data as Database["public"]["Tables"]["sponsors"]["Row"][];
-        // console.log( sponsorDataArr[0]["sponsor_arr"]);
         setSponsorData(sponsorDataArr);
       })
       .catch((err) => {
