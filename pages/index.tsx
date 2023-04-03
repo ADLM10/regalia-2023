@@ -8,6 +8,7 @@ import { Database } from "@/types/supabase";
 import Card from "@/components/card";
 import { User } from "@supabase/supabase-js";
 import Image from "next/image";
+import Sponsors from "@/components/Sponsors";
 
 export default function Home({
   events,
@@ -44,11 +45,12 @@ export default function Home({
             (
               item: Database["public"]["Tables"]["events"]["Row"],
               index: number
-            ) => (
-              <Card key={`events__${index}`} eventData={item} />
-            )
-          )}
+              ) => (
+                <Card key={`events__${index}`} eventData={item} />
+                )
+                )}
         </div>
+        <Sponsors />
         <ContactUs />
         <Footer />
         <Image
