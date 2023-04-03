@@ -163,10 +163,11 @@ export default function RegisteredEvents({
           </span>
         ) : (
           <>
-            <span className="text-center flex flex-row flex-wrap items-start justify-center text-lg mt-4 text-red-800"
-            style={{
-              fontFamily:"Unbounded,cursive"
-            }}
+            <span
+              className="text-center flex flex-row flex-wrap items-start justify-center text-lg mt-4 text-red-800"
+              style={{
+                fontFamily: "Unbounded,cursive",
+              }}
             >
               Registration of only unpaid events can be cancelled!
             </span>
@@ -198,10 +199,11 @@ export default function RegisteredEvents({
                       {registrationData.events && registrationData.events.name}
                     </h1>
                     {registrationData.team_name && (
-                      <h1 className="text-lg font-normal text-center text-black dark:text-gray-100"
-                      style={{
-                        fontFamily: "Unbounded,cursive",
-                      }}
+                      <h1
+                        className="text-lg font-normal text-center text-black dark:text-gray-100"
+                        style={{
+                          fontFamily: "Unbounded,cursive",
+                        }}
                       >
                         <b>Team Name:</b> {registrationData.team_name}
                       </h1>
