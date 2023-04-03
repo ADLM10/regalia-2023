@@ -36,7 +36,7 @@ export default function Home({
     name: "",
     poster_image: "",
     multiple_registrations_allowed: false,
-    min_team_size: 0,
+    min_members: 0,
     fees: 0,
     type: "",
     team_size: 0,
