@@ -16,6 +16,7 @@ export async function getRegisteredEvents({
       .select(select)
       .eq("registered_by", email);
 
+
     const participationData: Database["public"]["Tables"]["participation"]["Row"][] =
       data as unknown as Database["public"]["Tables"]["participation"]["Row"][];
 

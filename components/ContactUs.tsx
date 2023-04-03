@@ -3,10 +3,10 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className="w-full py-4 mx-auto mt-4 text-white bg-black rounded-2xl md:w-3/4">
+    <div className="w-full py-4 mx-auto my-20 text-white bg-black rounded-2xl md:w-3/4 z-10 relative">
       <header className="flex justify-center text-center">Contact Us</header>
       <div
-        className=" contact-us flex flex-wrap items-center justify-between gap-5 mx-auto text-3xl"
+        className=" contact-us flex flex-wrap items-center justify-between gap-5 mx-auto text-3xl "
         style={{ width: "90%" }}
       >
         <div className="w-full sm:w-full md:w-full lg:w-1/2">
@@ -40,7 +40,7 @@ const ContactUs = () => {
                 </h4>
                 <a
                   href={"tel:+91 89189 69446"}
-                  className="text-base md:font-medium"
+                  className="text-base md:font-medium hover:text-[blueviolet]"
                 >
                   +91 89189 69446
                 </a>
@@ -51,7 +51,7 @@ const ContactUs = () => {
                 </h4>
                 <a
                   href={"tel:+91 94330 18776"}
-                  className="text-base md:font-medium"
+                  className="text-base md:font-medium hover:text-[blueviolet]"
                 >
                   +91 94330 18776
                 </a>
@@ -62,7 +62,7 @@ const ContactUs = () => {
                 </h4>
                 <a
                   href={"tel:+91 98364 45449"}
-                  className="text-base md:font-medium"
+                  className="text-base md:font-medium hover:text-[blueviolet]"
                 >
                   +91 98364 45449
                 </a>

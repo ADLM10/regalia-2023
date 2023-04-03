@@ -25,6 +25,7 @@ export interface Database {
           rules_regulations: string;
           team_size: number;
           type: string;
+          prize_pool:number;
         };
         Insert: {
           coordinators?: string[] | null;
@@ -41,6 +42,7 @@ export interface Database {
           rules_regulations: string;
           team_size: number;
           type: string;
+          prize_pool?:number;
         };
         Update: {
           coordinators?: string[] | null;
@@ -57,6 +59,7 @@ export interface Database {
           rules_regulations?: string;
           team_size?: number;
           type?: string;
+          prize_pool?:number;
         };
       };
       participation: {

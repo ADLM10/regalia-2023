@@ -3,7 +3,7 @@ import Link from "next/link";
 const hero = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   return (
     <>
-      <div className="landing-page pb-10">
+      <div className="landing-page pb-10 ">
         <div className="hero-section gap-5 md:gap-32">
           <div
             className="hero-text "
@@ -17,7 +17,7 @@ const hero = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
             <br />
             2023
           </div>
-          <div id="circle">
+          <div id="circle" className="z-10">
             <svg
               className="text-circle"
               xmlns="http://www.w3.org/2000/svg"

@@ -7,6 +7,7 @@ import { getEvents } from "@/utils/getEvents";
 import { Database } from "@/types/supabase";
 import Card from "@/components/card";
 import { User } from "@supabase/supabase-js";
+import Image from "next/image";
 
 export default function Home({
   events,
@@ -25,8 +26,18 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
+      <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
         <Hero isLoggedIn={user ? true : false} />
+        <div className="flex flex-col justify-start items-left mb-20">
+          <h1 className="text-5xl text-left font-normal text-white px-10 pt-10">
+            Events.
+          </h1>
+          <span className="text-2xl text-left font-thin text-white px-10 "
+          style={{fontFamily: "Unbounded,cursive"}}
+          >
+            Participate and emerge victorious in these eyegrabbing events.
+          </span>
+        </div>
         <div className="event-card">
           {events.map(
             (
@@ -39,7 +50,17 @@ export default function Home({
         </div>
         <ContactUs />
         <Footer />
-      </body>
+        <Image
+          src="https://i.imgur.com/G42sxIN.png"
+          alt="Background"
+          width={700}
+          height={700}
+          className="fixed md:top-40 md:right-5 opacity-10 top-24 -right-16"
+          style={{
+            zIndex: 0,
+          }}
+        />
+      </main>
     </>
   );
 }
@@ -48,7 +69,9 @@ export async function getServerSideProps() {
   let data;
 
   try {
-    data = await getEvents("name, details, poster_image,rules_regulations");
+    data = await getEvents(
+      "name, details, poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type"
+    );
   } catch (err) {
     console.log(err);
   }
