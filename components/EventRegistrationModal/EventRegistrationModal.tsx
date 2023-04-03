@@ -76,8 +76,8 @@ const EventRegistrationModal = ({
   return (
     <>
       {open && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-sm z-50 flex justify-center items-center">
-          <div className=" w-full bg-gradient-to-br from-balck to-fuchsia-200 max-h-[40rem] rounded-lg shadow-lg flex flex-col justify-evenly items-center mx-5 p-5 md:w-1/2 event-modal bg-gradient-to-br from-balck to-fuchsia-200 backdrop-blur-sm ">
+        <div className="fixed top-0 left-0 w-full h-full  bg-opacity-50 backdrop-blur-sm z-50 flex justify-center items-center">
+          <div className=" w-full  max-h-[40rem] rounded-lg shadow-lg flex flex-col bg-gradient-to-br from-black to-fuchsia-950 justify-evenly items-center mx-5 p-5 md:w-1/2 event-modal  backdrop-blur-sm ">
             <div className="w-full flex flex-row justify-between items-center p">
               <div className="w-24 h-24 relative">
                 <Image
