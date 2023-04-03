@@ -32,8 +32,9 @@ export default function Home({
           <h1 className="text-5xl text-left font-normal text-white px-10 pt-10">
             Events.
           </h1>
-          <span className="text-2xl text-left font-thin text-white px-10 "
-          style={{fontFamily: "Unbounded,cursive"}}
+          <span
+            className="text-2xl text-left font-thin text-white px-10 "
+            style={{ fontFamily: "Unbounded,cursive" }}
           >
             Participate and emerge victorious in these eyegrabbing events.
           </span>

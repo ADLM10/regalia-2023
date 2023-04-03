@@ -1,4 +1,5 @@
 import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
+import PaymentModal from "@/components/Modals/PaymentModal";
 import { Database } from "@/types/supabase";
 import { cancelRegistration } from "@/utils/cancelRegistration";
 import { getRegisteredEvents } from "@/utils/getRegisteredEvents";
@@ -384,7 +385,7 @@ export default function RegisteredEvents({
           )}
         </section>
       </main>
-      {/* <PaymentModal
+      <PaymentModal
         open={showPaymentModal}
         setOpen={setshowPaymentModal}
         amount={amount}
@@ -395,7 +396,7 @@ export default function RegisteredEvents({
         registeredEvents={data}
         setRegisteredEvents={setData}
         setChecked={setChecked}
-      /> */}
+      />
     </>
   );
 }
