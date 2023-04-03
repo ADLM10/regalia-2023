@@ -8,6 +8,16 @@ import { Database } from "@/types/supabase";
 import Card from "@/components/card";
 import { User } from "@supabase/supabase-js";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
+const EventRegistrationModal = dynamic(
+  () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
 
 export default function Home({
   events,
@@ -18,6 +28,29 @@ export default function Home({
   user: User | null;
   isLoading: boolean;
 }): JSX.Element {
+  const [eventData, setEventData] = useState<
+    Database["public"]["Tables"]["events"]["Row"]
+  >({
+    id: 0,
+    name: "",
+    poster_image: "",
+    multiple_registrations_allowed: false,
+    min_team_size: 0,
+    fees: 0,
+    type: "",
+    team_size: 0,
+    rules_regulations: "",
+  } as Database["public"]["Tables"]["events"]["Row"]);
+
+  const [open, setOpen] = useState<boolean>(false);
+
+  const [amount, setAmount] = useState(0);
+  const [showPaymentBtn, setShowPaymentBtn] = useState(false);
+
+  // TODO: Add types
+  const [registeredEvents, setRegisteredEvents] = useState<any[]>([]);
+  const [participatedEvents, setParticipatedEvents] = useState<any[]>([]);
+
   return (
     <>
       <Head>
@@ -45,7 +78,12 @@ export default function Home({
               item: Database["public"]["Tables"]["events"]["Row"],
               index: number
             ) => (
-              <Card key={`events__${index}`} eventData={item} />
+              <Card
+                key={`events__${index}`}
+                eventData={item}
+                setEventData={setEventData}
+                setOpen={setOpen}
+              />
             )
           )}
         </div>
@@ -62,6 +100,18 @@ export default function Home({
           }}
         />
       </main>
+      <EventRegistrationModal
+        open={open}
+        setOpen={setOpen}
+        event={eventData}
+        setShowPayment={setShowPaymentBtn}
+        setAmount={setAmount}
+        registeredEvents={registeredEvents}
+        participatedEvents={participatedEvents}
+        setParticipatedEvents={setParticipatedEvents}
+        setRegisteredEvents={setRegisteredEvents}
+        registeredByEmail={user !== undefined ? user?.email : ""}
+      />
     </>
   );
 }
@@ -71,7 +121,7 @@ export async function getServerSideProps() {
 
   try {
     data = await getEvents(
-      "name, details, poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type"
+      "id,name,details,poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type"
     );
   } catch (err) {
     console.log(err);
