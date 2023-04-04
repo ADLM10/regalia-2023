@@ -176,7 +176,7 @@ export default function Home({
           alt="Background"
           width={700}
           height={700}
-          className="fixed md:top-40 md:right-5 opacity-10 top-24 -right-16"
+          className="fixed md:top-40 md:right-5 opacity-10 top-24 right-10"
           style={{
             zIndex: 0,
           }}
