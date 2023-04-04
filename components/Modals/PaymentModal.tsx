@@ -214,14 +214,14 @@ const PaymentModal = ({
                         <Dialog.Description className="mt-2 text-lg text-gray-500">
                           <div className="w-full flex justify-center">
                             <Image
-                              src={"https://i.imgur.com/sNEScWJ.jpg"}
+                              src={"https://i.imgur.com/Ma2KiZh.png"}
                               alt={"upiqrcode"}
                               width={500}
                               height={700}
                             />
                           </div>
                           <div className="mt-4 flex justify-center">
-                            <span>UPI ID : 6291080552@kotak</span>
+                            <span>UPI ID : pritamtan2001@oksbi</span>
                           </div>
                           <form onSubmit={handleSubmit}>
                             <div className="mt-4">
