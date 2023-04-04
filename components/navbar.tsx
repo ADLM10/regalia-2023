@@ -34,13 +34,16 @@ export default function NavBar({ user }: { user: User | null }) {
                 height={100}
               />
             </a>
-            <Image
-              src={user?.user_metadata.avatar_url}
-              alt="avatar"
-              width={50}
-              height={50}
-              className="rounded-full md:hidden"
-            />
+            {user?.user_metadata.avatar_url && (
+              <Image
+                src={user?.user_metadata.avatar_url}
+                alt="avatar"
+                width={50}
+                height={50}
+                className="rounded-full md:hidden"
+              />
+            )}
+
             <div className="md:hidden">
               <div
                 className="z-50 flex relative w-8 h-8 flex-col justify-between items-center md:hidden"
