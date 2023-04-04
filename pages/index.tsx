@@ -125,19 +125,21 @@ export default function Home({
 
       <main className="bg-gradient-to-tl from-fuchsia-950 to-black pt-32">
         {showPaymentBtn && (
-          <button
-            onClick={() => {
-              router.push({
-                pathname: "/registered-events",
-              });
-            }}
-            className="bg-white fixed right-10 bottom-20 w-32 h-10 z-20 rounded-2xl hover:bg-[blueviolet] hover:text-white transition duration-300 ease-in-out "
-            style={{
-              fontFamily: "Unbounded,cursive",
-            }}
-          >
-            Pay ₹ {amount}
-          </button>
+          <div className="fixed bottom-10 w-full flex justify-center z-40">
+            <button
+              onClick={() => {
+                router.push({
+                  pathname: "/registered-events",
+                });
+              }}
+              className="bg-white p-5 px-10 right-20 bottom-20 z-20 rounded-2xl hover:bg-[blueviolet] hover:text-white transition duration-300 ease-in-out "
+              style={{
+                fontFamily: "Unbounded,cursive",
+              }}
+            >
+              Pay ₹ {amount}
+            </button>
+          </div>
         )}
         <Hero isLoggedIn={user ? true : false} />
         <div className="flex flex-col justify-start items-left mb-20">
