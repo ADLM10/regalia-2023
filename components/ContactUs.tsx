@@ -3,7 +3,9 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className="w-full py-4 mx-auto my-20 text-white bg-black rounded-2xl md:w-3/4 z-10 relative">
+    <div className="w-full py-4 mx-auto my-20 text-white bg-black rounded-2xl md:w-3/4 z-10 relative"
+    id="contact"
+    >
       <header className="flex justify-center text-center">Contact Us</header>
       <div
         className=" contact-us flex flex-wrap items-center justify-between gap-5 mx-auto text-3xl "

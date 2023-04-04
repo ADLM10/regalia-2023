@@ -24,7 +24,9 @@ const Sponsors = () => {
       });
   }, []);
   return (
-    <div className="my-10">
+    <div className="my-10"
+    id="sponsors"
+    >
       {sponsorData &&
         sponsorData.map(
           (item: Database["public"]["Tables"]["sponsors"]["Row"], index) => {
