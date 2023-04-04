@@ -12,7 +12,6 @@ export default function Events({
 }: {
   events: Database["public"]["Tables"]["events"]["Row"][];
 }): JSX.Element {
-
   const [showModal, setShowModal] = useState(false);
 
   return (

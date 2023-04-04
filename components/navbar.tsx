@@ -13,8 +13,6 @@ export default function NavBar({ user }: { user: User | null }) {
 
   const [dropdown, setDropdown] = useState(false);
 
-  console.log(user);
-
   useEffect(() => {
     if (user === null) {
       setShowSignOut(false);
@@ -106,7 +104,7 @@ export default function NavBar({ user }: { user: User | null }) {
                   >
                     Registered Events
                   </Link>
-                  
+
                   {showSignOut && (
                     <>
                       <Link
@@ -217,23 +215,6 @@ export default function NavBar({ user }: { user: User | null }) {
                 </div>
               </div>
             )}
-
-            {/* {showSignOut && (
-              <button
-                className="hidden md:block bg-white text-black px-4 py-2 rounded-lg font-semibold text-sm md:text-base hover:bg-red-800 hover:text-white transition duration-300 ease-in-out"
-                style={{
-                  fontFamily: "Unbounded, cursive",
-                }}
-                onClick={() => {
-                  signOut()
-                  .then(() => {
-                    window.location.reload();
-                  })
-                }}
-              >
-                Sign Out
-              </button>
-            )} */}
           </div>
         ) : (
           <button

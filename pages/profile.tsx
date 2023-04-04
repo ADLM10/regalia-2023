@@ -39,7 +39,8 @@ const Profile = () => {
       if (user) {
         setUser(user);
         getUserProfile(user.id).then((profiles) => {
-          const profile = profiles[0] as Database["public"]["Tables"]["users"]["Row"];
+          const profile =
+            profiles[0] as Database["public"]["Tables"]["users"]["Row"];
           setFormData({
             name: profile.name ?? "",
             phone: profile.phone ?? "",

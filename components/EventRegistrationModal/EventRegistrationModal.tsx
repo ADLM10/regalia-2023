@@ -48,8 +48,6 @@ const EventRegistrationModal = ({
     setParticipatedEvents(tempParticipatedEvents);
   }
 
-  
-
   const renderFormFields = (size: number) => {
     return Array(size)
       .fill(0)

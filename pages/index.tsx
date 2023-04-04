@@ -18,7 +18,6 @@ import { useRouter } from "next/router";
 import { isUserDetailsEmpty } from "@/utils/UserFunctions";
 import { ToastContainer } from "react-toastify";
 
-
 const EventRegistrationModal = dynamic(
   () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
   {
@@ -77,8 +76,7 @@ export default function Home({
           if (val) {
             router.push("/profile");
           }
-        })
-        ,
+        }),
         supabase
           .rpc("search_email_in_registered_event", {
             email: user.email,
@@ -113,11 +111,8 @@ export default function Home({
           }
         }),
       ]);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
-
-  
 
   return (
     <>
@@ -186,8 +181,7 @@ export default function Home({
             zIndex: 0,
           }}
         />
-        <ToastContainer
-        />
+        <ToastContainer />
       </main>
       <EventRegistrationModal
         open={open}

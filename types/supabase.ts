@@ -90,12 +90,16 @@ export interface Database {
           transaction_screenshot_file_name: string | null;
           transaction_verified: boolean | null;
           upi_id: string | null;
+          // below 2 fields are present while calling the search_email function
+          poster_image: string | null; // poster_image of event
+          name: string | null; // name of event
+          /* join with events table through event id */
           events?: {
             id: number;
             name: string;
             poster_image: string;
             fees: number;
-          } /* join with events table through event id */;
+          };
         };
         Insert: {
           event_id: number;

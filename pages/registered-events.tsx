@@ -323,9 +323,6 @@ export default function RegisteredEvents({
               isTeamRegisteredEventsExpanded ? (
                 <div className="flex flex-row flex-wrap items-start justify-center h-auto w-full">
                   {teamRegisteredEvents.map((registrationData, index) => {
-
-                    console.log(registrationData)
-
                     return (
                       <div
                         className="flex flex-col justify-evenly items-center w-96 h-[400px] m-8 bg-white rounded-3xl shadow-lg p-4 z-10"
@@ -337,9 +334,9 @@ export default function RegisteredEvents({
                             overflow: "hidden",
                           }}
                         >
-                          {registrationData.events && (
+                          {registrationData && (
                             <Image
-                              src={`${registrationData.events.poster_image}.png`}
+                              src={`${registrationData.poster_image}.png`}
                               alt="Event Poster"
                               fill
                               style={{ objectFit: "cover" }}
@@ -348,8 +345,7 @@ export default function RegisteredEvents({
                           )}
                         </div>
                         <h1 className="text-3xl font-thin text-center text-black dark:text-gray-100">
-                          {registrationData.events &&
-                            registrationData.events.name}
+                          {registrationData && registrationData.name}
                         </h1>
                         {registrationData.team_name && (
                           <h1

@@ -1,18 +1,14 @@
 import Image from "next/image";
 
-
 const EventRulesModal = ({
-    showModal,
-    eventData,
-    closeModal,
+  showModal,
+  eventData,
+  closeModal,
 }: {
   showModal: any;
   eventData: any;
   closeModal: any;
 }) => {
-
-    
-
   return (
     <>
       {showModal && (
@@ -51,16 +47,15 @@ const EventRulesModal = ({
               dangerouslySetInnerHTML={{ __html: eventData.rules_regulations }}
             ></div>
             <div
-            className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal leading-7 mt-5 "
-            style={{
-              fontFamily: "Unbounded, cursive",
-            }}
-            dangerouslySetInnerHTML={{
-              __html: eventData.faculty_coordinator,
-            }}
-          ></div>
+              className="flex flex-col items-left justify-evenly w-full text-white text-sm font-normal leading-7 mt-5 "
+              style={{
+                fontFamily: "Unbounded, cursive",
+              }}
+              dangerouslySetInnerHTML={{
+                __html: eventData.faculty_coordinator,
+              }}
+            ></div>
           </div>
-          
         </div>
       )}
     </>

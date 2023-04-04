@@ -48,8 +48,6 @@ subheader {
   font-weight: 800;
   justify-content: center;
   text-align: center;
-  background-color: white;
-  color: black;
   font-size: 2rem;
   padding: 1.5rem;
   cursor: pointer;
@@ -58,11 +56,6 @@ subheader {
   -moz-border-radius: 200px;
   -ms-border-radius: 200px;
   -o-border-radius: 200px;
-}
-
-.primary-button:hover {
-  background-color: blueviolet;
-  color: white;
 }
 
 .hero-section {
