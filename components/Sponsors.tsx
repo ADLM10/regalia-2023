@@ -24,13 +24,13 @@ const Sponsors = () => {
       });
   }, []);
   return (
-    <div className="my-5">
+    <div className="my-10">
       {sponsorData &&
         sponsorData.map(
           (item: Database["public"]["Tables"]["sponsors"]["Row"], index) => {
             const sponsorArr = item.sponsor_arr as any;
             return (
-              <div key={`${item.category}_${index}`}>
+              <div key={`${item.category}_${index}`} className="my-5">
                 <div className="w-3/4 mx-auto flex flex-row gap-5 justify-center items-center">
                   <div
                     className="mx-2 bg-violet-600"
@@ -49,8 +49,8 @@ const Sponsors = () => {
                     return (
                       <div
                         key={`sponsor_${index}`}
-                        className="my-3 flex justify-center flex-col items-center rounded-xl py-3"
-                        style={{ boxShadow: "1px 2px 9px rgb(0,0,0,0.9)" }}
+                        className="my-3 flex  flex-col items-center justify-between rounded-xl  gap-5"
+                        style={{ boxShadow: "1px 2px 9px rgb(0,0,0,0.9)" ,padding:"20px" }}
                       >
                         <Image
                           src={sponsor.sponsor_logo_url}
