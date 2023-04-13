@@ -190,7 +190,7 @@ footer {
 }
 .event-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;

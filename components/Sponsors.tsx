@@ -50,7 +50,10 @@ const Sponsors = () => {
                       <div
                         key={`sponsor_${index}`}
                         className="my-3 flex  flex-col items-center justify-between rounded-xl  gap-5"
-                        style={{ boxShadow: "1px 2px 9px rgb(0,0,0,0.9)" ,padding:"20px" }}
+                        style={{
+                          boxShadow: "1px 2px 9px rgb(0,0,0,0.9)",
+                          padding: "20px",
+                        }}
                       >
                         <Image
                           src={sponsor.sponsor_logo_url}

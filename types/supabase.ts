@@ -212,6 +212,8 @@ export interface Database {
           role: string | null;
           swc_payment: boolean | null;
           year: string | null;
+          coordinating_event_id?: number;
+          convening_event_category?: string;
         };
         Insert: {
           college?: string | null;

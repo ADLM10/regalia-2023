@@ -15,8 +15,9 @@ import { ParticipatedEvents } from "@/types/ParticipatedEvents";
 import { supabase } from "@/utils/supabaseClient";
 import { getRegisteredEvents } from "@/utils/getRegisteredEvents";
 import { useRouter } from "next/router";
-import { isUserDetailsEmpty } from "@/utils/UserFunctions";
+import { getUserProfile, isUserDetailsEmpty } from "@/utils/UserFunctions";
 import { ToastContainer } from "react-toastify";
+import Link from "next/link";
 
 const EventRegistrationModal = dynamic(
   () => import("@/components/EventRegistrationModal/EventRegistrationModal"),
@@ -53,7 +54,7 @@ export default function Home({
 
   const [amount, setAmount] = useState<number>(0);
   const [showPaymentBtn, setShowPaymentBtn] = useState(false);
-
+  const [showCoordinatorPage, setShowCoordinatorPage] = useState(false);
   // TODO: Add types
   const [registeredEvents, setRegisteredEvents] = useState<any[]>([]);
   const [participatedEvents, setParticipatedEvents] = useState<
@@ -76,6 +77,9 @@ export default function Home({
           if (val) {
             router.push("/profile");
           }
+        }),
+        getUserProfile(user!.id, "role").then((profile) => {
+          if (profile[0].role !== "participant") setShowCoordinatorPage(true);
         }),
         supabase
           .rpc("search_email_in_registered_event", {
@@ -142,6 +146,16 @@ export default function Home({
           </div>
         )}
         <Hero isLoggedIn={user ? true : false} />
+        {showCoordinatorPage && (
+          <div className="flex justify-center ">
+            <Link
+              className=" h-full bg-white hover:bg-blue-600 action:bg-blue-600 rounded py-2 px-4"
+              href="/coordinator"
+            >
+              Coordinator Page
+            </Link>
+          </div>
+        )}
         <div className="flex flex-col justify-start items-left mb-20">
           <h1 className="text-5xl text-left font-normal text-white px-10 pt-10">
             Events.
