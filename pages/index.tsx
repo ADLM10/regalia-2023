@@ -79,7 +79,7 @@ export default function Home({
           }
         }),
         getUserProfile(user!.id, "role").then((profile) => {
-          if (profile[0].role !== "participant") setShowCoordinatorPage(true);
+          if (profile[0].role !== "participant" && profile[0].role) setShowCoordinatorPage(true);
         }),
         supabase
           .rpc("search_email_in_registered_event", {
