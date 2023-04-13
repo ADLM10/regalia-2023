@@ -91,7 +91,7 @@ export default function NavBar({ user }: { user: User | null }) {
               </li>
 
               <li className="text-white hover:text-blue-600">
-                <Link href="/#contact">Sponsors</Link>
+                <Link href="/#sponsors">Sponsors</Link>
               </li>
               <li className="text-white hover:text-blue-600">
                 <Link href="/#contact">Contact Us</Link>

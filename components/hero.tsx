@@ -5,7 +5,7 @@ const hero = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   return (
     <>
       <div className="landing-page pb-10 ">
-        <div className="hero-section gap-5 md:gap-32">
+        <div className="hero-section gap-5 md:gap-20">
           <div
             className="hero-text "
             style={{
