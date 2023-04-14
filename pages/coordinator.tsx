@@ -57,7 +57,6 @@ const Coordinator = ({
       if (user) {
         getUserProfile(user.id, "role,id,coordinating_event_id").then(
           (profile) => {
-            // console.log(profile);
             if (profile[0].role === "participant") router.replace("/");
             else {
               // check if superadmin or convenor or coordinator
@@ -103,7 +102,6 @@ const Coordinator = ({
     setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
-  //   console.log(events)
 
   function checkEventName(id: number) {
     let event_name = "";
@@ -129,7 +127,7 @@ const Coordinator = ({
           registration_cancelled: false,
         },
         select:
-          "registered_by,team_member_1,team_member_2,team_member_3,team_member_4,team_member_5,team_name,transaction_id,transaction_verified",
+          "registered_by(name,phone,email,college),team_member_1,team_member_2,team_member_3,team_member_4,team_member_5,team_name,transaction_id,transaction_verified",
       }).then((data) => {
         setParticipationData({
           ...participationData,
@@ -150,7 +148,7 @@ const Coordinator = ({
   function addEmailsInParticipationDetailsModal(data: any): JSX.Element[] {
     const emails: JSX.Element[] = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 15; i++) {
       emails.push(
         <li key={`emails__li__${i}`}>
           <a
@@ -185,7 +183,6 @@ const Coordinator = ({
       </div>
     );
   }
-  //   console.log(participationData);
 
   return (
     <>
@@ -220,7 +217,7 @@ const Coordinator = ({
           </select>
         </div>
         {participationData[selectedEvent] && (
-          <table className="table-auto w-screen text-center text-sm mt-5">
+          <table className="table-auto w-screen text-center text-sm mt-5 font-sans">
             <thead>
               <tr>
                 <th className="text-xs w-1">No.</th>
@@ -248,17 +245,17 @@ const Coordinator = ({
                         openParticipationModal(data);
                       }}
                     >
-                      {data.registered_by}
+                      {data.registered_by.name}
                     </td>
                     <td className="px-2">
-                      {/* {
+                      {
                         <a
                           className="text-blue-900"
                           href={`tel:${data.registered_by["phone"]}`}
                         >
                           {data.registered_by["phone"]}
                         </a>
-                      } */}
+                      }
                     </td>
                     <td className="px-2 text-xs">{data["team_name"]}</td>
                     <td className="px-2 text-xs">
