@@ -101,7 +101,7 @@ const Profile = () => {
     return (
       !formData?.name.trim() ||
       !formData?.phone.trim() ||
-      !formData?.college.trim() 
+      !formData?.college.trim()
     );
   };
 
