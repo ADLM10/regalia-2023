@@ -2,15 +2,12 @@ import { searchCollege } from "@/utils/searchCollege";
 import { updateProfile } from "@/utils/updateProfile";
 import { User } from "@supabase/supabase-js";
 import Head from "next/head";
-import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import localData from "../public/data.json";
-// import { Users } from "@/interface/Users";
 import { ToastContainer, toast } from "react-toastify";
 import { validatePhoneNumber } from "@/utils/validatePhoneNumber";
 import { validateYear } from "@/utils/validateYear";
 import { useRouter } from "next/router";
-import NavBar from "@/components/navbar";
 import { getUser, getUserProfile } from "@/utils/UserFunctions";
 import { debounce } from "lodash";
 import { Database } from "@/types/supabase";
@@ -52,6 +49,7 @@ const Profile = () => {
         router.replace("/");
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [suggestions, setSuggestions] = useState<Array<any>>([]);
@@ -73,7 +71,7 @@ const Profile = () => {
         return false;
       }
       if (!validateYear(formData.year)) {
-        toast.error("Please enter a valid phone year");
+        toast.error("Please enter a valid year");
         return false;
       }
     }
@@ -94,8 +92,8 @@ const Profile = () => {
         year: formData.year,
       })
         .then((res) => {
-          router.push("/");
           toast.success("Profile Updated Successfully");
+          router.push("/");
         })
         .catch((err) => {
           toast.error("Error Updating Profile");
@@ -114,13 +112,12 @@ const Profile = () => {
 
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>{`${localData["title"]} Profile`}</title>
         <meta name="description" content="RCCIIT's Official Techfest" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar /> */}
       <main className="h-full">
         <div className="flex flex-col w-full justify-center items-center">
           <form onSubmit={editProfile}>
@@ -269,8 +266,8 @@ const Profile = () => {
               </button>
             </div>
           </form>
+          <ToastContainer />
         </div>
-        {/* <ToastContainer /> */}
       </main>
     </>
   );
