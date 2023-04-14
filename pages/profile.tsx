@@ -70,10 +70,6 @@ const Profile = () => {
         toast.error("Please enter a valid phone number");
         return false;
       }
-      if (!validateYear(formData.year)) {
-        toast.error("Please enter a valid year");
-        return false;
-      }
     }
     return true;
   };
@@ -105,8 +101,7 @@ const Profile = () => {
     return (
       !formData?.name.trim() ||
       !formData?.phone.trim() ||
-      !formData?.college.trim() ||
-      !formData?.year.trim()
+      !formData?.college.trim() 
     );
   };
 
@@ -232,7 +227,6 @@ const Profile = () => {
                       <input
                         type="text"
                         name="Year"
-                        required={true}
                         id="Year"
                         autoComplete="off"
                         className="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
