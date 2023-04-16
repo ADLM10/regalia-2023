@@ -168,7 +168,7 @@ export default function Home({
             Participate and emerge victorious in these eyegrabbing events.
           </span>
         </div>
-        <div className="event-card relative">
+        <div className="event-card  relative">
           {events.map(
             (
               item: Database["public"]["Tables"]["events"]["Row"],
