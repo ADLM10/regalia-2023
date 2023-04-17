@@ -119,6 +119,20 @@ export default function Home({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
+  useEffect(() => {
+    if (router.asPath !== router.route) {
+      const { hash } = window.location;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
   return (
     <>
       <Head>
@@ -177,6 +191,7 @@ export default function Home({
               <Card
                 key={`events__${index}`}
                 eventData={item}
+                id={`${item.name}`}
                 setEventData={setEventData}
                 setOpen={setOpen}
                 isLoggedIn={user ? true : false}
