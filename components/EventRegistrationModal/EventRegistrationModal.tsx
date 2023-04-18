@@ -74,7 +74,7 @@ const EventRegistrationModal = ({
                 required={index <= event.min_members - 1}
                 onChange={(e) => {
                   const newTeam = [...team];
-                  newTeam[index] = e.target.value;
+                  newTeam[index] = e.target.value.toLowerCase();
                   setTeam(newTeam);
                 }}
               />
