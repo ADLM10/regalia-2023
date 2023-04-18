@@ -1,10 +1,12 @@
 import { ParticipatedEvents } from "@/types/ParticipatedEvents";
 import { Database } from "@/types/supabase";
+import { checkEmailExists } from "@/utils/checkEmailExists";
 import { getNumberWithOrdinal } from "@/utils/dataHelper";
 import {
   newSoloRegistration,
   newTeamRegistration,
 } from "@/utils/newRegistration";
+import { validateEmail } from "@/utils/validateEmail";
 import Image from "next/image";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -48,6 +50,19 @@ const EventRegistrationModal = ({
     setParticipatedEvents(tempParticipatedEvents);
   }
 
+  function checkEmailIsRegistered(email: string) {
+    // if invalid email, don't check if email exists
+    if (!validateEmail(email)) {
+      toast.error("Invalid Email!");
+      return;
+    }
+    checkEmailExists(email).then((res) => {
+      if (!res) {
+        toast.error(`${email} is not registered on the platform!`);
+      }
+    });
+  }
+
   const renderFormFields = (size: number) => {
     return Array(size)
       .fill(0)
@@ -76,6 +91,11 @@ const EventRegistrationModal = ({
                   const newTeam = [...team];
                   newTeam[index] = e.target.value;
                   setTeam(newTeam);
+                }}
+                onBlur={(e) => {
+                  if (e.target.value && e.target.value.length > 0) {
+                    checkEmailIsRegistered(e.target.value);
+                  }
                 }}
               />
             </div>
