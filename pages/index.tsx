@@ -125,13 +125,12 @@ export default function Home({
       if (hash) {
         const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   return (
     <>

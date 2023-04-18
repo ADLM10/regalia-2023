@@ -10,7 +10,7 @@ const Card = ({
   setOpen,
   isLoggedIn,
   isParticipated,
-  id
+  id,
 }: {
   eventData: Database["public"]["Tables"]["events"]["Row"];
   setEventData: (
@@ -19,7 +19,7 @@ const Card = ({
   setOpen: (open: boolean) => void;
   isLoggedIn: boolean;
   isParticipated: boolean;
-  id?: string
+  id?: string;
 }) => {
   const { name, details, poster_image, multiple_registrations_allowed } =
     eventData;
