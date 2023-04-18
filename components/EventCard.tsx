@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import EventRegistrationModal from "./EventRegistrationModal/EventRegistrationModal";
 import EventRulesModal from "./Modals/EventRulesModal";
@@ -7,6 +8,7 @@ const EventCard = ({ eventData }: any) => {
   const { name, details, poster_image, id } = eventData;
 
   const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -39,6 +41,15 @@ const EventCard = ({ eventData }: any) => {
             {details}
           </p>
         </div>
+      <button 
+        className="bg-[#FFC107] text-black mt-5 font-semibold px-4 py-2 rounded-md shadow-md hover:shadow-lg transition duration-300 ease-in-out"
+        onClick={() => {
+          // setShowModal(true);
+          router.push(`/#${eventData.name}`);
+        }}
+      >
+          Register Now
+      </button>
       </div>
       <EventRulesModal
         eventData={eventData}

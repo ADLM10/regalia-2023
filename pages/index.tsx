@@ -119,6 +119,20 @@ export default function Home({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
+  useEffect(() => {
+    if (router.asPath !== router.route) {
+      const { hash } = window.location;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
   return (
     <>
       <Head>
@@ -150,7 +164,7 @@ export default function Home({
         {showCoordinatorPage && (
           <div className="flex justify-center ">
             <Link
-              className=" h-full bg-white hover:bg-blue-600 action:bg-blue-600 rounded py-2 px-4"
+              className=" h-full z-50 bg-white hover:bg-blue-600 action:bg-blue-600 rounded py-2 px-4"
               href="/coordinator"
             >
               Coordinator Page
@@ -168,7 +182,7 @@ export default function Home({
             Participate and emerge victorious in these eyegrabbing events.
           </span>
         </div>
-        <div className="event-card relative">
+        <div className="event-card  relative">
           {events.map(
             (
               item: Database["public"]["Tables"]["events"]["Row"],
@@ -177,6 +191,7 @@ export default function Home({
               <Card
                 key={`events__${index}`}
                 eventData={item}
+                id={`${item.name}`}
                 setEventData={setEventData}
                 setOpen={setOpen}
                 isLoggedIn={user ? true : false}

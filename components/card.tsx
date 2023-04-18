@@ -10,6 +10,7 @@ const Card = ({
   setOpen,
   isLoggedIn,
   isParticipated,
+  id
 }: {
   eventData: Database["public"]["Tables"]["events"]["Row"];
   setEventData: (
@@ -18,6 +19,7 @@ const Card = ({
   setOpen: (open: boolean) => void;
   isLoggedIn: boolean;
   isParticipated: boolean;
+  id?: string
 }) => {
   const { name, details, poster_image, multiple_registrations_allowed } =
     eventData;
@@ -26,7 +28,7 @@ const Card = ({
 
   return (
     <>
-      <div className="card z-10">
+      <div className="card z-10" id={id}>
         <Image src={poster_image ?? ""} alt="" width={200} height={200} />
         <div>
           <h2 className="text-3xl font-bold">{name}</h2>

@@ -55,13 +55,13 @@ const hero = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
           {isLoggedIn ? (
             <Link
               href="/registered-events"
-              className="primary-button mb-10 bg-white text-black hover:bg-[#8a2be2] hover:text-white action:bg-[#8a2be2] action:text-white transition duration-300 ease-in-out"
+              className="primary-button z-10 mb-10 bg-white text-black hover:bg-[#8a2be2] hover:text-white action:bg-[#8a2be2] action:text-white transition duration-300 ease-in-out"
             >
               Registered Events
             </Link>
           ) : (
             <button
-              className="primary-button mb-10 bg-white text-black hover:bg-[#8a2be2] hover:text-white action:bg-[#8a2be2] action:text-white transition duration-300 ease-in-out z-30"
+              className="primary-button z-10 mb-10 bg-white text-black hover:bg-[#8a2be2] hover:text-white action:bg-[#8a2be2] action:text-white transition duration-300 ease-in-out"
               onClick={async () => {
                 await login();
               }}
