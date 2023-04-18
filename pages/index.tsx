@@ -164,7 +164,7 @@ export default function Home({
         {showCoordinatorPage && (
           <div className="flex justify-center ">
             <Link
-              className=" h-full bg-white hover:bg-blue-600 action:bg-blue-600 rounded py-2 px-4"
+              className=" h-full z-50 bg-white hover:bg-blue-600 action:bg-blue-600 rounded py-2 px-4"
               href="/coordinator"
             >
               Coordinator Page
