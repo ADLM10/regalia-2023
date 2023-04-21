@@ -127,7 +127,7 @@ const Coordinator = ({
           registration_cancelled: false,
         },
         select:
-          "registered_by(name,phone,email,college),team_member_1,team_member_2,team_member_3,team_member_4,team_member_5,team_name,transaction_id,transaction_verified",
+          "registered_by(name,phone,email,college),team_member_1,team_member_2,team_member_3,team_member_4,team_member_5,team_member_6,team_member_7,team_member_8,team_member_9,team_member_10,team_member_11,team_member_12,team_member_13,team_member_14,team_member_15,team_name,transaction_id,transaction_verified",
       }).then((data) => {
         setParticipationData({
           ...participationData,
