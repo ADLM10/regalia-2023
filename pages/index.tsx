@@ -150,7 +150,7 @@ export default function Home({
         {showCoordinatorPage && (
           <div className="flex justify-center ">
             <Link
-              className=" h-full z-50 bg-white hover:bg-blue-600 action:bg-blue-600 rounded py-2 px-4"
+              className=" h-full z-10 bg-white hover:bg-blue-600 action:bg-blue-600 rounded py-2 px-4"
               href="/coordinator"
             >
               Coordinator Page
@@ -221,7 +221,7 @@ export async function getServerSideProps() {
 
   try {
     data = await getEvents(
-      "id,name,details,poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type, faculty_coordinator ,multiple_registrations_allowed"
+      "id,name,details,poster_image,rules_regulations,fees,prize_pool,team_size,min_members,type, faculty_coordinator ,multiple_registrations_allowed,is_open"
     );
   } catch (err) {
     console.log(err);

@@ -21,8 +21,13 @@ const Card = ({
   isParticipated: boolean;
   id?: string;
 }) => {
-  const { name, details, poster_image, multiple_registrations_allowed } =
-    eventData;
+  const {
+    name,
+    details,
+    poster_image,
+    multiple_registrations_allowed,
+    is_open,
+  } = eventData;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -34,8 +39,24 @@ const Card = ({
           <h2 className="text-3xl font-bold">{name}</h2>
           <p>{details}</p>
           {isLoggedIn ? (
-            isParticipated ? (
-              multiple_registrations_allowed ? (
+            is_open ? (
+              isParticipated ? (
+                multiple_registrations_allowed ? (
+                  <button
+                    className="hover:bg-[blueviolet]"
+                    onClick={() => {
+                      setEventData(eventData);
+                      setOpen(true);
+                    }}
+                  >
+                    Register Now
+                  </button>
+                ) : (
+                  <span className="bg-green-700 rounded-2xl py-3 px-5 text-white mt-5">
+                    Registered
+                  </span>
+                )
+              ) : (
                 <button
                   className="hover:bg-[blueviolet]"
                   onClick={() => {
@@ -45,21 +66,14 @@ const Card = ({
                 >
                   Register Now
                 </button>
-              ) : (
-                <span className="bg-green-700 rounded-2xl py-3 px-5 text-white mt-5">
-                  Registered
-                </span>
               )
             ) : (
-              <button
-                className="hover:bg-[blueviolet]"
-                onClick={() => {
-                  setEventData(eventData);
-                  setOpen(true);
-                }}
-              >
-                Register Now
-              </button>
+              <span
+              className="bg-red-700 rounded-2xl py-3 px-5 text-white mt-5"
+              
+            >
+              Registraion Closed
+            </span>
             )
           ) : (
             <button
