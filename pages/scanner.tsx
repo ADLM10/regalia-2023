@@ -44,8 +44,8 @@ const Scanner = ({
   return (
     <>
       <Head>
-        <title>{data["title"]}</title>
-        <meta name="description" content="Cultural Fest of RCCIIT, Kolkata" />
+        <title>Scanner</title>
+        <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
