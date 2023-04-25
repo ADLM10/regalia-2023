@@ -6,14 +6,15 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import SponsorCategory from "./SponsorCategory";
 
-
-
 const Sponsors = () => {
   const [sponsorData, setSponsorData] = useState<
     Database["public"]["Tables"]["sponsors"]["Row"][]
   >([]);
 
-  const  compareSponsors = (a: Database["public"]["Tables"]["sponsors"]["Row"], b :Database["public"]["Tables"]["sponsors"]["Row"]) => {
+  const compareSponsors = (
+    a: Database["public"]["Tables"]["sponsors"]["Row"],
+    b: Database["public"]["Tables"]["sponsors"]["Row"]
+  ) => {
     const categoryA = categoryOrder.indexOf(a.category!);
     const categoryB = categoryOrder.indexOf(b.category!);
     if (categoryA < categoryB) {
@@ -23,8 +24,7 @@ const Sponsors = () => {
       return 1;
     }
     return 0;
-  }
-  
+  };
 
   useEffect(() => {
     getSponsorData("category, sponsor_arr")

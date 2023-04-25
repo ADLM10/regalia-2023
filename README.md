@@ -1,6 +1,5 @@
 # REGALIA 2023, RCCIIT
 
-
 ## Stack
 
 `Next.JS + Supabase + TailwindCSS + Vercel`
@@ -46,7 +45,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Tables
 
- Users
+Users
 
 ```sql
 create table
@@ -91,7 +90,7 @@ create table
   ) tablespace pg_default;
 ```
 
- Events
+Events
 
 ```sql
 create table
@@ -126,7 +125,8 @@ create table
   ) tablespace pg_default;
 ```
 
- Participation
+Participation
+
 ```sql
 create table
   public.participation (
@@ -187,7 +187,7 @@ create table
   ) tablespace pg_default;
 ```
 
- Sponsors
+Sponsors
 
 ```sql
 create table
