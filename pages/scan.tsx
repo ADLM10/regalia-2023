@@ -127,10 +127,11 @@ const Scanner = ({
           .getText()
           .replace(/[\[\]']+/g, "")
           .split(", ");
-        if (validateEmail(arr[1])) {
+        if (!validateEmail(arr[1])) {
           toast.error("Invalid Email!");
           return;
         }
+
         Array.isArray(arr) &&
           arr.length > 1 &&
           checkEntry(arr[1]).then((res) => {
@@ -155,6 +156,7 @@ const Scanner = ({
             }
           });
       } catch (e) {
+        toast.error("Invalid QR Code!");
         console.error(e);
       }
     },
