@@ -41,7 +41,7 @@ const Scanner = ({
   const date = d.getDate();
 
   const handleClick = async () => {
-    if (date === 26) {
+    if (date === 27) {
       const entryStatus = [true, entryDetail.entryDays[1]];
       const res = await updateEntryDetails(entryDetail.id, entryStatus);
       if (
@@ -57,7 +57,7 @@ const Scanner = ({
         setOpen(false);
         captured.current = false;
       }
-    } else if (date === 27) {
+    } else if (date === 28) {
       const entryStatus = [entryDetail.entryDays[0], true];
       const res = await updateEntryDetails(entryDetail.id, entryStatus);
       if (
@@ -123,7 +123,6 @@ const Scanner = ({
       try {
         if (captured.current) return;
         else captured.current = true;
-        console.log(result);
         const arr = result
           .getText()
           .replace(/[\[\]']+/g, "")
@@ -135,7 +134,7 @@ const Scanner = ({
         Array.isArray(arr) &&
           arr.length > 1 &&
           checkEntry(arr[1]).then((res) => {
-            if (date === 26 && !res[0].entry[0]) {
+            if (date === 27 && !res[0].entry[0]) {
               setOpen(true);
               setEntryDetail({
                 id: res[0].id,
@@ -143,7 +142,7 @@ const Scanner = ({
                 phone: res[0].phone,
                 entryDays: res[0].entry,
               });
-            } else if (date === 27 && !res[0].entry[1]) {
+            } else if (date === 28 && !res[0].entry[1]) {
               setOpen(true);
               setEntryDetail({
                 id: res[0].id,
@@ -186,7 +185,7 @@ const Scanner = ({
 
   function checkPhone(phone: string) {
     checkEntryWithPhone(phone).then((res) => {
-      if (date === 26 && !res[0].entry[0]) {
+      if (date === 27 && !res[0].entry[0]) {
         setOpen(true);
         setEntryDetail({
           id: res[0].id,
@@ -194,7 +193,7 @@ const Scanner = ({
           phone: res[0].phone,
           entryDays: res[0].entry,
         });
-      } else if (date === 27 && !res[0].entry[1]) {
+      } else if (date === 28 && !res[0].entry[1]) {
         setOpen(true);
         setEntryDetail({
           id: res[0].id,
@@ -211,7 +210,7 @@ const Scanner = ({
 
   function checkEmail(email: string) {
     checkEntry(email).then((res) => {
-      if (date === 26 && !res[0].entry[0]) {
+      if (date === 27 && !res[0].entry[0]) {
         setOpen(true);
         setEntryDetail({
           id: res[0].id,
@@ -219,7 +218,7 @@ const Scanner = ({
           phone: res[0].phone,
           entryDays: res[0].entry,
         });
-      } else if (date === 27 && !res[0].entry[1]) {
+      } else if (date === 28 && !res[0].entry[1]) {
         setOpen(true);
         setEntryDetail({
           id: res[0].id,
@@ -244,50 +243,46 @@ const Scanner = ({
       </Head>
       <main className="pt-32">
         <div className="flex flex-col gap-4 items-center">
-          <div className="rounded-3xl p-4 w-96 h-fit flex flex-col gap-3 items-center justify-evenly m-4 shadow-2xl">
-            {showScanner && <video className="h-64  rounded-3xl" ref={ref} />}
-            <p className="font-sans">---- OR ----</p>
-            <div className="flex flex-col gap-3 items-center justify-center">
-              <form className="flex flex-col items-center">
-                <input
-                  type="email"
-                  className="bg-white p-2 rounded-2xl w-64 font-sans w-full"
-                  placeholder="Enter Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <button
-                  className="bg-green-700 text-white p-2 rounded-2xl w-64 my-2 transition duration-300 ease-in-out font-sans"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    checkEmail(email);
-                  }}
-                >
-                  Submit
-                </button>
-              </form>
-              <p className="font-sans">---- OR ----</p>
-              <form className="flex flex-col items-center">
-                <input
-                  type="tel"
-                  className="bg-white p-2 rounded-2xl w-64 font-sans"
-                  placeholder="Enter Phone"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-                <button
-                  className="bg-green-700 text-white p-2 rounded-2xl w-64 my-2 transition duration-300 ease-in-out font-sans
+          {showScanner && <video className="h-64  rounded-3xl" ref={ref} />}
+          <p className="font-sans">---- OR ----</p>
+          <form className="flex flex-col items-center">
+            <input
+              type="email"
+              className="bg-white p-2 rounded-2xl w-64 font-sans w-full"
+              placeholder="Enter Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button
+              className="bg-green-700 text-white p-2 rounded-2xl w-64 my-2 transition duration-300 ease-in-out font-sans"
+              onClick={(e) => {
+                e.preventDefault();
+                checkEmail(email);
+              }}
+            >
+              Submit
+            </button>
+          </form>
+          <p className="font-sans">---- OR ----</p>
+          <form className="flex flex-col items-center">
+            <input
+              type="tel"
+              className="bg-white p-2 rounded-2xl w-64 font-sans"
+              placeholder="Enter Phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <button
+              className="bg-green-700 text-white p-2 rounded-2xl w-64 my-2 transition duration-300 ease-in-out font-sans
                 "
-                  onClick={(e) => {
-                    e.preventDefault();
-                    checkPhone(phone);
-                  }}
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
+              onClick={(e) => {
+                e.preventDefault();
+                checkPhone(phone);
+              }}
+            >
+              Submit
+            </button>
+          </form>
         </div>
         {open && <Modal />}
         <ToastContainer />
