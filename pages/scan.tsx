@@ -29,6 +29,7 @@ const Scanner = ({
     name: "",
     phone: 0,
     entryDays: [],
+    email: "",
   });
 
   const [email, setEmail] = useState("");
@@ -101,8 +102,10 @@ const Scanner = ({
             </button>
           </div>
           <div>
-            <h1 className="text-lg font-normal py-3 text-left text-black md:text-4xl mx-4">
+            <h1 className="text-lg font-sans font-normal py-3 text-left text-black md:text-4xl mx-4">
               {entryDetail.name}
+              <br></br>
+              {entryDetail.email.split("@")[0]}
             </h1>
             <div className="flex flex-col justify-evenly items-center w-full md:flex-row">
               <button
@@ -146,6 +149,7 @@ const Scanner = ({
                 name: res[0].name,
                 phone: res[0].phone,
                 entryDays: res[0].entry,
+                email: res[0].email,
               });
             } else if (date === 28 && !res[0].entry[1]) {
               setOpen(true);
@@ -154,6 +158,7 @@ const Scanner = ({
                 name: res[0].name,
                 phone: res[0].phone,
                 entryDays: res[0].entry,
+                email: res[0].email,
               });
             } else {
               toast.error("Already Scanned!");
@@ -202,6 +207,7 @@ const Scanner = ({
           name: res[0].name,
           phone: res[0].phone,
           entryDays: res[0].entry,
+          email: res[0].email,
         });
       } else if (date === 28 && !res[0].entry[1]) {
         setOpen(true);
@@ -210,6 +216,7 @@ const Scanner = ({
           name: res[0].name,
           phone: res[0].phone,
           entryDays: res[0].entry,
+          email: res[0].email,
         });
       } else {
         toast.error("Already Scanned!");
@@ -231,6 +238,7 @@ const Scanner = ({
           name: res[0].name,
           phone: res[0].phone,
           entryDays: res[0].entry,
+          email: res[0].email,
         });
       } else if (date === 28 && !res[0].entry[1]) {
         setOpen(true);
@@ -239,6 +247,7 @@ const Scanner = ({
           name: res[0].name,
           phone: res[0].phone,
           entryDays: res[0].entry,
+          email: res[0].email,
         });
       } else {
         toast.error("Already Scanned!");
