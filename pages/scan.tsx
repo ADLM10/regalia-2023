@@ -134,6 +134,10 @@ const Scanner = ({
         Array.isArray(arr) &&
           arr.length > 1 &&
           checkEntry(arr[1]).then((res) => {
+            if (res.length === 0) {
+              toast.error("Pass Not Available!");
+              return;
+            }
             if (date === 27 && !res[0].entry[0]) {
               setOpen(true);
               setEntryDetail({
@@ -185,6 +189,10 @@ const Scanner = ({
 
   function checkPhone(phone: string) {
     checkEntryWithPhone(phone).then((res) => {
+      if (res.length === 0) {
+        toast.error("Pass Not Available!");
+        return;
+      }
       if (date === 27 && !res[0].entry[0]) {
         setOpen(true);
         setEntryDetail({
@@ -210,6 +218,10 @@ const Scanner = ({
 
   function checkEmail(email: string) {
     checkEntry(email).then((res) => {
+      if (res.length === 0) {
+        toast.error("Pass Not Available!");
+        return;
+      }
       if (date === 27 && !res[0].entry[0]) {
         setOpen(true);
         setEntryDetail({
