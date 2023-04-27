@@ -161,7 +161,7 @@ const Scanner = ({
                 email: res[0].email,
               });
             } else {
-              toast.error("Already Scanned!");
+              toast.error(`Already scanned ${res[0].name}`);
             }
           });
       } catch (e) {
@@ -219,7 +219,7 @@ const Scanner = ({
           email: res[0].email,
         });
       } else {
-        toast.error("Already Scanned!");
+        toast.error(`Already scanned ${res[0].name}`);
       }
       setPhone("");
     });
@@ -250,7 +250,7 @@ const Scanner = ({
           email: res[0].email,
         });
       } else {
-        toast.error("Already Scanned!");
+        toast.error(`Already scanned ${res[0].name}`);
       }
       setEmail("");
     });
